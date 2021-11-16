@@ -1,0 +1,105 @@
+.footer__color {
+    background: var(--footer-bg);
+}
+.footer__container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 50px;
+    /* background: var(--color-light-blue); */
+}
+.footer__top-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.footer__brand p {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--ff-intive);
+    color: white;
+}
+.footer__cpr{
+    font-family: var(--ff-intive);
+    font-size: 16px;
+    padding-left: 3em;
+    margin-top: 0.1em;
+    color: var(--grey-color);
+}
+.footer__bottom-section {
+    display: flex;
+    align-items: center;
+}
+.footer__newsletter {
+    width: 20%;
+}
+.footer__newsletter-form {
+    display: flex;
+}
+.footer__newsletter-title {
+    color: var(--color-black);
+    padding-bottom: 4em;
+    font-size: 10px;
+    font-family: var(--ff-intive);
+    line-height: 12px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.footer__input {
+    height: 48px;
+    margin-bottom: 0px;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #999;
+    font-family: var(--ff-intive);
+    font-size: 14px;
+    line-height: 24px;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+.footer__button {
+    width: 100px;
+    height: 48px;
+    background-color: #000;
+    font-family: var(--ff-intive);
+    color: var(--white);
+    border: none;
+    padding: 9px 15px;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+@media screen and (min-width: 768px) {
+    .footer__categories {
+        width: 75%;
+    }    
+    .footer__categories h6 {
+        padding: 2em 0 1em 0;
+        font-family: var(--ff-intive);
+        color: var(--color-black);
+        font-size: 10px;
+        line-height: 12px;
+        font-weight: 600;
+        text-align: left;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .footer__categories-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.5em 0;
+    }
+    .footer__categories-item {
+        width: 25%;
+        font-size: 14px;
+        padding: 5px 0;
+        color: var(--white);
+        font-family: var(--ff-intive);
+    }
+}
