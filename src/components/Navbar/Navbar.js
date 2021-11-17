@@ -1,8 +1,21 @@
 import React from 'react'
+// import {auth} from '../../firebase'
+
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 
+
 function Navbar() {
+
+    // firebase.auth().onAuthStateChanged((user) => {
+    //     if (user) {
+    //       var uid = user.uid;
+    //       console.log('User logued'+ user + uid);
+    //       // ...
+    //     } else {
+    //         console.log('User not logued');
+    //     }
+    //   });
 
     const user = false;
 
