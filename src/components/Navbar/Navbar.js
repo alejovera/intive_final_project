@@ -1,7 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 function Navbar() {
+
+    const user = false;
+
     return (
         <div className="navbar">
             <div className="navbar__container">
@@ -13,6 +17,20 @@ function Navbar() {
                     <div className="navbar__link">Home</div>
                     <div className="navbar__link">Latest</div>
                     <div className="navbar__link">About</div>
+                    {user ? (
+                        <>
+                        <p>Hello {user.name}</p>
+                        <i class="fa-solid fa-user"></i>
+                        </>
+                    ): (
+                        <>
+                        <Link to='/login'>
+                            <p>Sign In</p>
+                            <i class="fa-solid fa-user"></i>
+                        </Link>
+                        </>
+                    ) 
+                    }
                 </nav>
             </div>
         </div>

@@ -28,6 +28,7 @@
     font-family: var(--ff-intive);
     color: var(--color-light-blue);
     font-size: 30px;
+    font-weight: bold;
     margin: 0.2em 0 0 0;
 }
 .navbar__links-container {
