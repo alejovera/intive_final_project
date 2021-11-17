@@ -1,23 +1,25 @@
-import React from 'react'
-// import {auth} from '../../firebase'
-
+import React, { useState } from 'react'
+import { firebaseApp, auth } from '../../firebase';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 
 function Navbar() {
 
-    // firebase.auth().onAuthStateChanged((user) => {
-    //     if (user) {
-    //       var uid = user.uid;
-    //       console.log('User logued'+ user + uid);
-    //       // ...
-    //     } else {
-    //         console.log('User not logued');
-    //     }
-    //   });
+    const [userLoggued, setUserLoggued] = useState(false)
+    const [userEmail, setUserEmail] = useState('')
 
-    const user = false;
+    firebaseApp.auth().onAuthStateChanged((user) => {
+        if (user) {
+          setUserLoggued(true)
+          setUserEmail(user.email)
+          // ...
+        } else {
+            console.log(user);
+            console.log('User not logued');
+        }
+      });
+
 
     return (
         <div className="navbar">
@@ -30,18 +32,18 @@ function Navbar() {
                     <div className="navbar__link">Home</div>
                     <div className="navbar__link">Latest</div>
                     <div className="navbar__link">About</div>
-                    {user ? (
+                    {userLoggued ? (
                         <>
-                        <p>Hello {user.name}</p>
-                        <i class="fa-solid fa-user"></i>
+                            <p className="navbar__username">Hello {userEmail}</p>
+                            <i className="fa-solid fa-user"></i>
                         </>
                     ): (
-                        <>
-                        <Link to='/login'>
-                            <p>Sign In</p>
-                            <i class="fa-solid fa-user"></i>
-                        </Link>
-                        </>
+                        <div className="navbar__sign-in">
+                            <Link className="navbar__redirects" to='/login'>
+                                <p className="navbar__link">Sign In</p>
+                                <i className="fa-solid fa-user"></i>
+                            </Link>
+                        </div>
                     ) 
                     }
                 </nav>
