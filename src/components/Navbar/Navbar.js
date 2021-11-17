@@ -15,8 +15,8 @@ function Navbar() {
           setUserEmail(user.email)
           // ...
         } else {
-            console.log(user);
-            console.log('User not logued');
+            // console.log(user);
+            // console.log('User not logued');
         }
       });
 
@@ -30,7 +30,10 @@ function Navbar() {
                 </div>
                 <nav className="navbar__links-container">
                     <div className="navbar__link">Home</div>
-                    <div className="navbar__link">Latest</div>
+                    <Link className="navbar__redirects" to='/admin'>
+                        <div className="navbar__link">Admin</div>
+                    </Link>
+                    
                     <div className="navbar__link">About</div>
                     {userLoggued ? (
                         <>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import { Home } from './pages/Home';
 import {Login} from './pages/Login';
+import { Admin } from './pages/Admin';
+
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Parse from 'parse/dist/parse'
@@ -97,6 +99,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path='/admin' component={Admin} />
           <Route path='/login' component={Login} />
         </Switch>
       </Router>
@@ -105,3 +108,4 @@ function App() {
 }
 
 export default App
+ 

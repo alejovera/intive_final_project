@@ -5,13 +5,12 @@ import Parse from 'parse/dist/parse';
 import './SmallPosts.css'
 import sampleImg from '../../assets/seafood.jpg'
 
-function SmallPosts() {
-
-    const [person, setPerson] = useState(null);
+function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, creditsText, analyzedInstructions, id}) {
 
   const [post, setPost] = useState(null)
 
   useEffect(() => {
+    // addPost()
     fetchPost()
   }, [])
 
@@ -19,67 +18,72 @@ function SmallPosts() {
   async function fetchPost() {
     const query = new Parse.Query('Post')
     const Post = await query.first()
-    setPost(Post)
-  }
-
-  async function addPost() {
-    try {
-      const Post = new Parse.Object('Post');
-      Post.set('title', 'Ceviche Peruano');
-      Post.set('info', 'Se hace con limon y pulpo')
-      await Post.save()
-    } catch (err) {
-      console.error(err)
+    const postInfo = {
+      title: Post.get('title'),
+      id: Post.get('id'),
+      image: Post.get('image'),
+      cuisine: Post.get('cuisine'),
+      summary: Post.get('summary'),
+      creditsText: Post.get('creditsText'),
+      diet: Post.get('diet'),
+      readyInMinutes: Post.get('readyInMinutes'),
+      analyzedInstructions: Post.get('analyzedInstructions')
     }
+    setPost(postInfo)
+
+    const results = await query.find()
   }
 
-    async function addPerson() {
-        try {
-          // create a new Parse Object instance
-          const Person = new Parse.Object('Person');
-          // define the attributes you want for your Object
-          Person.set('name', 'John');
-          Person.set('email', 'john@back4app.com');
-          // save it on Back4App Data Store
-          await Person.save();
-          alert('Person saved!');
-        } catch (error) {
-          console.log('Error saving new person: ', error);
-        }
-      }
+
+  // async function addPost() {
+  //   try {
+  //     const Post = new Parse.Object('Post');
+  //     Post.set('title', 'Ceviche Peruano');
+  //     Post.set('id', 716426);
+  //     Post.set('image', 'https://spoonacular.com/recipeImages/716426-312x231.jpg');
+  //     Post.set('cuisine', ['Chinese', 'Asian'])
+  //     Post.set('summary', 'Ceviche hecho con alacaicas y puerro al doraod por un pato y sembrado por los tataras tataras abuelos del pino');
+  //     Post.set('creditsText', 'Jen West')
+  //     Post.set('diet', ['vegan', 'dairy free']);
+  //     Post.set('readyInMinutes', 45)
+  //     Post.set('analyzedInstructions', [{
+  //       "steps": [
+  //         {
+  //           "number": 1,
+  //           "step": "esta info del primer paso 1",
+  //         },{
+  //           "number": 2,
+  //           "step": "esta es la info paso 2"
+  //         }
+  //       ]
+  //     }]);
+
+
+  //     await Post.save()
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
+
     
-      async function fetchPerson() {
-        // create your Parse Query using the Person Class you've created
-        const query = new Parse.Query('Person');
-        // use the equalTo filter to look for user which the name is John. this filter can be used in any data type
-        query.equalTo('name', 'John');
-        // run the query
-        const Person = await query.first();
-        // access the Parse Object attributes
-        console.log('person name: ', Person.get('name'));
-        console.log('person email: ', Person.get('email'));
-        console.log('person id: ', Person.id);
-        setPerson(Person);
-      }
 
     return (
         <>
-     <button onClick={addPerson}>Add Person</button>
-      <button onClick={fetchPerson}>Fetch Person</button>
-      {person !== null && (
-        <div>
-          <p>{`Name: ${person.get('name')}`}</p>
-          <p>{`Email: ${person.get('email')}`}</p>
-        </div>
-      )}
-
         <div className="small-post__container">
-            <img src={sampleImg} alt="" className="small-post__img" />
+            <img src={`${image}`} alt="" className="small-post__img" />
             <div className="small-post__text">
-                <a href="" className="top-post__link">Seafood</a>
-                <h3 className="small-post__title">Helmut Lang celebrates taxi drivers worldwide in latest campaign</h3>
+                {/* <a href="" className="top-post__link">{cuisine[0]}</a> */}
+                <h3 className="small-post__title">{title}</h3>
+                <p>{summary}</p>
+                {/* <p>{readyInMinutes}</p>
+                <p>{diet}</p>
+                <p>{cuisine}</p> */}
+                {/* <p>{analyzedInstructions}</p> */}
+                {/* <p>{id}</p> */}
+                
+
                 <div className="top-post__author">
-                    <span>By Reta Thorpy</span>
+                    <span>By {creditsText}</span>
                 </div>
             </div>
         </div>
