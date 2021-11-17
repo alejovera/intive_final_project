@@ -32,28 +32,31 @@ function Login() {
     }
     
     return (
-        <div className="login">
-            <Link to="/">
-                <img
-                    className="login__logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/800px-Amazon_logo.svg.png"
-                    alt=""
-                />
-            </Link>
+    <>
+        <div className="login__container">
+            <div className="main">  	
+                <input className="login__input" type="checkbox" id="chk" aria-hidden="true" />
 
-            <div className="login__container">
-                <h1>Sign in</h1>
-                <form>
-                    <h5>Email</h5>
-                    <input onChange={event => setEmail(event.target.value)} value={email} type="email" />
-                    <h5>Password</h5>
-                    <input value={password} onChange={event => setPassword(event.target.value)} type="password" />
-                    <button onClick={login} type="submit" className="login__signInbutton">Sign in</button>
-                </form>
-                <p>By bla bla bla</p>
-                <button onClick={register} className="login__registerButton">Create your Amazon Account</button>
+                <div className="signup">
+                    <form>
+                        <label className="login__label" for="chk" aria-hidden="true">Sign up</label>
+                        <input className="login__input" type="email" onChange={evt => setEmail(evt.target.value)} name="email" placeholder="Email" required="" />
+                        <input className="login__input" type="password" onChange={evt => setPassword(evt.target.value)} name="pswd" placeholder="Password" required="" />
+                        <button className="login__button" onClick={register}>Sign up</button>
+                    </form>
+                </div>
+
+                <div className="login">
+                    <form>
+                        <label className="login__label" for="chk" aria-hidden="true">Login</label>
+                        <input className="login__input" onChange={evt => setEmail(evt.target.value)} type="email" name="email" placeholder="Email" required="" />
+                        <input className="login__input" onChange={evt => setPassword(evt.target.value)} type="password" name="pswd" placeholder="Password" required="" />
+                        <button className="login__button" onClick={login}>Login</button>
+                    </form>
+                </div>
             </div>
         </div>
+    </>
     )
 }
 
