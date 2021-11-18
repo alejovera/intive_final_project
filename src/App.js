@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Parse from 'parse/dist/parse'
 
 import './App.css'
+import { Navbar } from './components/Navbar/Navbar';
 const PARSE_APPLICATION_ID = '30moZyUSnXvabufgBiQKouFVfFdXRHVLDC2rdWwt';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
 const PARSE_JAVASCRIPT_KEY = 'J3OVnMF52D7n27OsW6EdpvNPsuckAVJiKUFR0LV3';
@@ -497,13 +498,17 @@ function App() {
 
   // const resultsPost = unstructureData.results;
 
+  const showLoguin = false
 
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path='/login' component={Login} />
+          <Route path='/login'>
+            <Navbar showLoguin={showLoguin} />
+            <Login />
+          </Route>
           <Route path='/admin' component={Admin} />
           <Route path='/posts/:id'>
             <PostDetail />
