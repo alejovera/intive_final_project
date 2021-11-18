@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Parse from 'parse/dist/parse'
+import { Post } from '../components/Post/Post'
 import {useParams} from 'react-router-dom'
+import { Navbar } from '../components/Navbar/Navbar'
 
 function PostDetail() {
     let {id} = useParams()
@@ -52,16 +54,10 @@ function PostDetail() {
     }
     
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{cuisine}</p>
-            <p>{diet}</p>
-            <p>{readyInMinutes}</p>
-            <p>{summary}</p>
-            {/* <p>{analyzedInstructions.steps[1]}</p> */}
-            <p>{creditsText}</p>
-            <img src={image} alt="" />
-        </div>
+        <>
+        <Navbar />  
+        <Post id={id} />
+       </>
     )
 }
 

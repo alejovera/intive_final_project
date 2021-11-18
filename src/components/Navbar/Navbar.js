@@ -20,6 +20,13 @@ function Navbar() {
         }
       });
 
+    const logout = (e) => {
+        e.preventDefault()
+        auth.signOut()
+        setUserLoggued(false)
+    }
+    
+
 
     return (
         <div className="navbar">
@@ -29,22 +36,35 @@ function Navbar() {
                     <span className="logo-text">Cousine</span>
                 </div>
                 <nav className="navbar__links-container">
-                    <div className="navbar__link">Home</div>
-                    <Link className="navbar__redirects" to='/admin'>
-                        <div className="navbar__link">Admin</div>
+                    <Link to='/' className="navbar__redirects">
+                        <div className="navbar__link">Home</div>
+
                     </Link>
+                    {userLoggued ? (
+                        <Link className="navbar__redirects" to='/admin'>
+                            <div className="navbar__link">Admin</div>
+                        </Link>
+                    ): (
+                        <>
+                        </>
+                    )}
+                    
                     
                     <div className="navbar__link">About</div>
                     {userLoggued ? (
                         <>
+                            <div style={{display: 'flex'}}>
+
                             <p className="navbar__username">Hello {userEmail}</p>
-                            <i className="fa-solid fa-user"></i>
+                            <i class="fas fa-user"></i>
+                            <p className="navbar__link" onClick={logout}>Sign Out</p>
+                            </div>
                         </>
                     ): (
                         <div className="navbar__sign-in">
                             <Link className="navbar__redirects" to='/login'>
                                 <p className="navbar__link">Sign In</p>
-                                <i className="fa-solid fa-user"></i>
+                                <i class="fas fa-user"></i>
                             </Link>
                         </div>
                     ) 

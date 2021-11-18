@@ -3,7 +3,12 @@
     width: inherit;
     padding: 25px 20px;
     width: 100%;
-    /* margin: 20px 20px; */
+}
+.small-post__link {
+    color: var(--color-black);
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
 }
 .small-post__img {
     width: 100%;

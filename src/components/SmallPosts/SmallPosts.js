@@ -96,19 +96,19 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
         {userLogued ? (
           <>
             <div className="small-post__container">
-              <Link to={`/posts/${id}`}>
+              <Link className="small-post__link" to={`/posts/${id}`}>
 
                 <img src={`${image}`} alt="" className="small-post__img" />
                 <div className="small-post__text">
                     {/* <a href="" className="top-post__link">{cuisine[0]}</a> */}
                       <h3 className="small-post__title">{title}</h3>
-                      <p>{summary}</p>
+                      {/* <p>{summary}</p> */}
 
                 </div>
               </Link>
-                  {/* <p>{readyInMinutes}</p>
+                  <p>{readyInMinutes}</p>
                   <p>{diet}</p>
-                  <p>{cuisine}</p> */}
+                  <p>{cuisine}</p>
                   {/* <p>{analyzedInstructions}</p> */}
                   {/* <p>{id}</p> */}
                   
@@ -117,7 +117,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                       <span>By {creditsText}</span>
                   </div>
                   <div className="delete__post" onClick={deletePost}>
-                    <i class="far fa-times-circle"></i>
+                    <i className="far fa-times-circle"></i>
                   </div>
               
             </div>
@@ -131,10 +131,10 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                 <div className="small-post__text">
                     {/* <a href="" className="top-post__link">{cuisine[0]}</a> */}
                     <h3 className="small-post__title">{title}</h3>
-                    <p>{summary}</p>
-                    {/* <p>{readyInMinutes}</p>
+                    {/* <p>{summary}</p> */}
+                    <p>{readyInMinutes}</p>
                     <p>{diet}</p>
-                    <p>{cuisine}</p> */}
+                    <p>{cuisine}</p>
                     {/* <p>{analyzedInstructions}</p> */}
                     {/* <p>{id}</p> */}
                     
