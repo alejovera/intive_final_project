@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Home } from './pages/Home';
 import {Login} from './pages/Login';
+import {PostDetail} from './pages/PostDetail';
 import { Admin } from './pages/Admin';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -82,23 +83,15 @@ function App() {
 
   // const resultsPost = unstructureData.results;
 
-  // const mappedPosts = resultsPost.map(item => {
-  //   setPost({
-  //     title: item.title,
-  //     summary: item.summary,
-  //     image: item.image,
-  //     id: item.id,
-  //     diet: item.diets,
-  //     creditsText: item.creditsText,
-  //     cousine: item.coisine,
-  //   })
-  // })
 
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path='/:id'>
+            <PostDetail />
+          </Route>
           <Route path='/admin' component={Admin} />
           <Route path='/login' component={Login} />
         </Switch>

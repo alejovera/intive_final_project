@@ -4,6 +4,7 @@ import Parse from 'parse/dist/parse';
 
 import './SmallPosts.css'
 import sampleImg from '../../assets/seafood.jpg'
+import { Link } from 'react-router-dom';
 
 function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, creditsText, analyzedInstructions, id}) {
 
@@ -69,6 +70,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
 
     return (
         <>
+        <Link to={`/${id}`}>
         <div className="small-post__container">
             <img src={`${image}`} alt="" className="small-post__img" />
             <div className="small-post__text">
@@ -87,6 +89,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                 </div>
             </div>
         </div>
+        </Link>
         </>
     )
 }
