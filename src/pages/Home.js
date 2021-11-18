@@ -10,11 +10,12 @@ function Home() {
 
     useEffect(() => {
         fetchPost()
-    }, [])
+    }, [counter])
     async function fetchPost() {
         const query = new Parse.Query('Post')
         const Post = await query.first()
         const results = await query.find()
+        console.log(results);
         return setCounter(results);
     }
     return (

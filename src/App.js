@@ -89,11 +89,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path='/:id'>
+          <Route path='/login' component={Login} />
+          <Route path='/admin' component={Admin} />
+          <Route path='/posts/:id'>
             <PostDetail />
           </Route>
-          <Route path='/admin' component={Admin} />
-          <Route path='/login' component={Login} />
         </Switch>
       </Router>
     </>
