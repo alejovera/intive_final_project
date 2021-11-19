@@ -4,6 +4,26 @@
     padding: 25px 20px;
     width: 100%;
 }
+.small-post__time {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+.small-post__time p {
+    font-family: var(--ff-intive);
+    font-weight: bold;
+    padding: 0 1em 0 0;
+}
+.small-post__p{
+    font-family: var(--ff-intive2);
+    font-weight: 400;
+}
+.redcross {
+    padding-top: 0.5em;
+}
+.redcross:hover {
+    font-size: 2.2em;
+}
 .small-post__link {
     color: var(--color-black);
     margin: 0;

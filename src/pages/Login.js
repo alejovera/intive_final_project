@@ -9,6 +9,8 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword ] = useState('')
     
+    // console.log(props);
+
     const login = e => {
         e.preventDefault()
         // parte de la logica login
@@ -39,7 +41,7 @@ function Login() {
 
                 <div className="signup">
                     <form>
-                        <label className="login__label" for="chk" aria-hidden="true">Sign up</label>
+                        <label className="login__label" htmlFor="chk" aria-hidden="true">Sign up</label>
                         <input className="login__input" type="email" onChange={evt => setEmail(evt.target.value)} name="email" placeholder="Email" required="" />
                         <input className="login__input" type="password" onChange={evt => setPassword(evt.target.value)} name="pswd" placeholder="Password" required="" />
                         <button className="login__button" onClick={register}>Sign up</button>
@@ -48,7 +50,7 @@ function Login() {
 
                 <div className="login">
                     <form>
-                        <label className="login__label" for="chk" aria-hidden="true">Login</label>
+                        <label className="login__label" htmlFor="chk" aria-hidden="true">Login</label>
                         <input className="login__input" onChange={evt => setEmail(evt.target.value)} type="email" name="email" placeholder="Email" required="" />
                         <input className="login__input" onChange={evt => setPassword(evt.target.value)} type="password" name="pswd" placeholder="Password" required="" />
                         <button className="login__button" onClick={login}>Login</button>

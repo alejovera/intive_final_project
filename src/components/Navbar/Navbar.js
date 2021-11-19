@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 
-function Navbar() {
+function Navbar({}) {
 
     const [userLoggued, setUserLoggued] = useState(false)
     const [userEmail, setUserEmail] = useState('')
@@ -58,7 +58,7 @@ function Navbar() {
                             <div style={{display: 'flex'}}>
 
                             <p className="navbar__username">Hello {userEmail}</p>
-                            <i class="fas fa-user"></i>
+                            <i className="fas fa-user"></i>
                             <p className="navbar__link" onClick={logout}>Sign Out</p>
                             </div>
                         </>
@@ -66,7 +66,7 @@ function Navbar() {
                         <div className="navbar__sign-in">
                             <Link className="navbar__redirects" to='/login'>
                                 <p className="navbar__link">Sign In</p>
-                                <i class="fas fa-user"></i>
+                                <i className="fas fa-user"></i>
                             </Link>
                         </div>
                     ) 

@@ -103,12 +103,19 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                     {/* <a href="" className="top-post__link">{cuisine[0]}</a> */}
                       <h3 className="small-post__title">{title}</h3>
                       {/* <p>{summary}</p> */}
-
+                      <div className="small-post__time">
+                        <p className="small-post__p">{readyInMinutes}'</p>
+                        <span style={{fontSize: '1.5em'}}>
+                          <i class="far fa-clock"></i>  
+                        </span>
+                        
+                      </div>
                 </div>
               </Link>
-                  <p>{readyInMinutes}</p>
-                  <p>{diet}</p>
-                  <p>{cuisine}</p>
+                  
+                    <p className="small-post__p">{diet}</p>
+                    <p className="small-post__p">{cuisine}</p>
+
                   {/* <p>{analyzedInstructions}</p> */}
                   {/* <p>{id}</p> */}
                   
@@ -117,7 +124,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                       <span>By {creditsText}</span>
                   </div>
                   <div className="delete__post" onClick={deletePost}>
-                    <i className="far fa-times-circle"></i>
+                    <i style={{color: 'red', fontSize: '2em'}} className="far fa-times-circle redcross"></i>
                   </div>
               
             </div>
@@ -125,16 +132,23 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
           </>
         ): (
           <>
-          <Link to={`/posts/${id}`}>
+          <Link className="small-post__link" to={`/posts/${id}`}>
             <div className="small-post__container">
                 <img src={`${image}`} alt="" className="small-post__img" />
                 <div className="small-post__text">
                     {/* <a href="" className="top-post__link">{cuisine[0]}</a> */}
                     <h3 className="small-post__title">{title}</h3>
                     {/* <p>{summary}</p> */}
-                    <p>{readyInMinutes}</p>
-                    <p>{diet}</p>
-                    <p>{cuisine}</p>
+                    <div className="small-post__time">
+                      <p className="small-post__p">{readyInMinutes}'</p>
+                      <span style={{fontSize: '1.5em'}}>
+                        <i class="far fa-clock"></i>  
+                      </span>
+                      
+                    </div>
+
+                    <p className="small-post__p">{diet}</p>
+                    <p className="small-post__p">{cuisine}</p>
                     {/* <p>{analyzedInstructions}</p> */}
                     {/* <p>{id}</p> */}
                     

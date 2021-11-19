@@ -24,6 +24,8 @@ function App() {
 
   const [unstructureData, setUnstructureData] = useState()
 
+  const [showLoguin, setShowLoguin] = useState(false)
+
   // useEffect(() => {
   //   fetch(`https://api.spoonacular.com/recipes/complexSearch?&addRecipeInformation=true&number=3&diet=true&summary=true&apiKey=${API_KEY}`)
   //     .then(res => res.json())
@@ -498,7 +500,7 @@ function App() {
 
   // const resultsPost = unstructureData.results;
 
-  const showLoguin = false
+  
 
   return (
     <>
