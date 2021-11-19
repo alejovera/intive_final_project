@@ -106,7 +106,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                       <div className="small-post__time">
                         <p className="small-post__p">{readyInMinutes}'</p>
                         <span style={{fontSize: '1.5em'}}>
-                          <i class="far fa-clock"></i>  
+                          <i className="far fa-clock"></i>  
                         </span>
                         
                       </div>
@@ -123,8 +123,12 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                   <div className="top-post__author">
                       <span>By {creditsText}</span>
                   </div>
-                  <div className="delete__post" onClick={deletePost}>
-                    <i style={{color: 'red', fontSize: '2em'}} className="far fa-times-circle redcross"></i>
+                  <div className="delete__post">
+                    <button className="delete-button__post" onClick={deletePost}>
+                      Delete Post
+                      <i style={{fontSize: '2em'}} className="far fa-times-circle redcross"></i>
+
+                    </button>
                   </div>
               
             </div>
@@ -142,7 +146,7 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
                     <div className="small-post__time">
                       <p className="small-post__p">{readyInMinutes}'</p>
                       <span style={{fontSize: '1.5em'}}>
-                        <i class="far fa-clock"></i>  
+                        <i className="far fa-clock"></i>  
                       </span>
                       
                     </div>

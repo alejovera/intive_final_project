@@ -15,7 +15,6 @@ function Post({id}) {
     const [analyzedInstructions, setAnalyzedInstructions] = useState()
     const [creditsText, setCreditsText] = useState()
 
-    console.log(id);
     useEffect(() => {
         (async function fetchPost() {
             const query = new Parse.Query('Post')
@@ -36,9 +35,7 @@ function Post({id}) {
                 const htmlConvertedString = `${summary}`
 
                 const toString = createdAt.toString()
-                console.log(toString);
                 const slicedString = toString.slice(0, 21)
-                console.log(slicedString);
 
                 setTitle(title)
                 setImage(image)

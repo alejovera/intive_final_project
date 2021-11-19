@@ -9,6 +9,7 @@ function Home() {
     const [counter, setCounter] = useState([])
     const [idPost, setIdPost] = useState()
 
+
     useEffect(() => {
         fetchPost()
     }, [counter])

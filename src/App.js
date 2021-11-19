@@ -11,43 +11,46 @@ import Parse from 'parse/dist/parse'
 
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar';
-const PARSE_APPLICATION_ID = '30moZyUSnXvabufgBiQKouFVfFdXRHVLDC2rdWwt';
+const PARSE_APPLICATION_ID = 'eiafq36mzdNNl7pmDx1CB4m4YPll9Yjbhi5sk9Io';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
-const PARSE_JAVASCRIPT_KEY = 'J3OVnMF52D7n27OsW6EdpvNPsuckAVJiKUFR0LV3';
+const PARSE_JAVASCRIPT_KEY = 'Z98ycVRHgEESrWg2SboMOznCtpI1ihePTR4x6qvA';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
 
 
 const API_KEY = 'e97329be8b32403880bf659279fa5ae9';
+const numberOfPosts = 1
 
 function App() {
 
   const [unstructureData, setUnstructureData] = useState()
 
-  const [showLoguin, setShowLoguin] = useState(false)
+  // const fetchPosts = () => {
+  // }
 
-  // useEffect(() => {
-  //   fetch(`https://api.spoonacular.com/recipes/complexSearch?&addRecipeInformation=true&number=3&diet=true&summary=true&apiKey=${API_KEY}`)
-  //     .then(res => res.json())
-  //     .then(data => setUnstructureData({
-  //       title0: data.results[0].title,
-  //       summary0: data.results[0].summary,
-  //       image0: data.results[0].image,
-  //       readyInMinutes0: data.results[0].readyInMinutes,
-  //       creditsText0: data.results[0].creditsText,
-  //       // id0: data.results[0].id,
-  //       cuisine0: data.results[0].cuisines,
-  //       diet0: data.results[0].diets,
-        // analyzedInstructions0: data.results[0].analyzedInstructions,
-        // title1: data.results[1].title,
-        // summary1: data.results[1].summary,
-        // image1: data.results[1].image,
-        // readyInMinutes1: data.results[1].readyInMinutes,
-        // creditsText1: data.results[1].creditsText,
-        // // id1: data.results[1].id,
-        // cuisine1: data.results[1].cuisines,
-        // diet1: data.results[1].diets,
-        // // analyzedInstructions1: data.results[1].analyzedInstructions,
+  useEffect(() => {
+    // fetchPosts()
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?&addRecipeInformation=true&number=${numberOfPosts}&diet=true&summary=true&apiKey=${API_KEY}`)
+      .then(res => res.json())
+      .then(data => setUnstructureData({
+        title0: data.results[0].title,
+        summary0: data.results[0].summary,
+        image0: data.results[0].image,
+        // readyInMinutes0: data.results[0].readyInMinutes,
+        // creditsText0: data.results[0].creditsText,
+        // // id0: data.results[0].id,
+        // cuisine0: data.results[0].cuisines,
+        // diet0: data.results[0].diets,
+  //       // analyzedInstructions0: data.results[0].analyzedInstructions,
+  //       title1: data.results[1].title,
+  //       summary1: data.results[1].summary,
+  //       image1: data.results[1].image,
+  //       readyInMinutes1: data.results[1].readyInMinutes,
+  //       creditsText1: data.results[1].creditsText,
+  //       // id1: data.results[1].id,
+  //       cuisine1: data.results[1].cuisines,
+  //       diet1: data.results[1].diets,
+        // analyzedInstructions1: data.results[1].analyzedInstructions,
         // title2: data.results[2].title,
         // summary2: data.results[2].summary,
         // image2: data.results[2].image,
@@ -120,11 +123,11 @@ function App() {
         // cuisine9: data.results[9].cuisines,
         // diet9: data.results[9].diets,
         // analyzedInstructions9: data.results[9].analyzedInstructions,
-  //   }))
+    }))
     
-  //     addPost1()
-  //     // addPost2()
-  //     // addPost3()
+      addPost1()
+      // addPost2()
+      // addPost3()
   //     // addPost4()
   //     // addPost5()
   //     // addPost6()
@@ -133,7 +136,7 @@ function App() {
   //     // addPost9()
   //     // addPost10()
 
-  // }, [])
+  }, [])
   
 
   async function addPost1(){
@@ -142,15 +145,13 @@ function App() {
     try {
     Post.set('title', `${unstructureData.title0}`)
     Post.set('image', `${unstructureData.image0}`)
-    Post.set('cuisine', `${unstructureData.cuisine0}`)
+    // Post.set('cuisine', `${unstructureData.cuisine0}`)
     Post.set('summary', `${unstructureData.summary0}`)
-    Post.set('creditsText', `${unstructureData.creditsText0}`)
-    Post.set('diet', `${unstructureData.diet0}`)
-    Post.set('readyInMinutes', `${unstructureData.readyInMinutes0}`)
+    // Post.set('creditsText', `${unstructureData.creditsText0}`)
+    // Post.set('diet', `${unstructureData.diet0}`)
+    // Post.set('readyInMinutes', `${unstructureData.readyInMinutes0}`)
     // Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions0}`)
     // Post.set('id', unstructureData.id0)
-    
-    
       await Post.save()
       alert("Success, post created")
       return true
@@ -170,10 +171,8 @@ function App() {
   //   Post.set('creditsText', `${unstructureData.creditsText1}`)
   //   Post.set('diet', `${unstructureData.diet1}`)
   //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes1}`)
-  //   // Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions1}`)
+  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions1}`)
   //   // Post.set('id', unstructureData.id1)
-    
-    
   //     await Post.save()
   //     alert("Success, post created")
   //     return true
@@ -363,152 +362,17 @@ function App() {
   //   }
   // }
 
-
-
-
-
-
-
-
-  // useEffect(() => {
-    
-  //   (async function addPost() {
-  //     const Post = new Parse.Object('Post');
-      // Post.set('title', unstructureData.title0);
-      // Post.set('summary', unstructureData.summary0);
-      // Post.set('image', unstructureData.image0);
-      // Post.set('cuisine', unstructureData.cuisine0);
-      // Post.set('id', unstructureData.id0);
-      // Post.set('diet', unstructureData.diet0);
-      // Post.set('creditsText', unstructureData.creditsText0);
-      // Post.set('analyzedInstructions', unstructureData.analyzedInstructions0);
-      // Post.set('readyInMinutes', unstructureData.readyInMinutes0);
-
-      // try {
-        // create a new Parse Object instance
-        // define the attributes you want for your Object
-        // Post.set('title', unstructureData.title0);
-        // Post.set('summary', unstructureData.summary0);
-        // Post.set('image', unstructureData.image0);
-        // Post.set('cuisine', unstructureData.cuisine0);
-        // Post.set('id', unstructureData.id0);
-        // Post.set('diet', unstructureData.diet0);
-        // Post.set('creditsText', unstructureData.creditsText0);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions0);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes0);
-
-        // Post.set('title', unstructureData.title1);
-        // Post.set('summary', unstructureData.summary1);
-        // Post.set('image', unstructureData.image1);
-        // Post.set('cuisine', unstructureData.cuisine1);
-        // Post.set('id', unstructureData.id1);
-        // Post.set('diet', unstructureData.diet1);
-        // Post.set('creditsText', unstructureData.creditsText1);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions1);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes1);
-
-
-        // Post.set('title', unstructureData.title3);
-        // Post.set('summary', unstructureData.summary3);
-        // Post.set('image', unstructureData.image3);
-        // Post.set('cuisine', unstructureData.cuisine3);
-        // Post.set('id', unstructureData.id3);
-        // Post.set('diet', unstructureData.diet3);
-        // Post.set('creditsText', unstructureData.creditsText3);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions3);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes3);
-
-
-        // Post.set('title', unstructureData.title4);
-        // Post.set('summary', unstructureData.summary4);
-        // Post.set('image', unstructureData.image4);
-        // Post.set('cuisine', unstructureData.cuisine4);
-        // Post.set('id', unstructureData.id4);
-        // Post.set('diet', unstructureData.diet4);
-        // Post.set('creditsText', unstructureData.creditsText4);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions4);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes4);
-
-
-        // Post.set('title', unstructureData.title5);
-        // Post.set('summary', unstructureData.summary5);
-        // Post.set('image', unstructureData.image5);
-        // Post.set('cuisine', unstructureData.cuisine5);
-        // Post.set('id', unstructureData.id5);
-        // Post.set('diet', unstructureData.diet5);
-        // Post.set('creditsText', unstructureData.creditsText5);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions5);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes5);
-
-        // Post.set('title', unstructureData.title6);
-        // Post.set('summary', unstructureData.summary6);
-        // Post.set('image', unstructureData.image6);
-        // Post.set('cuisine', unstructureData.cuisine6);
-        // Post.set('id', unstructureData.id6);
-        // Post.set('diet', unstructureData.diet6);
-        // Post.set('creditsText', unstructureData.creditsText6);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions6);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes6);
-
-        // Post.set('title', unstructureData.title7);
-        // Post.set('summary', unstructureData.summary7);
-        // Post.set('image', unstructureData.image7);
-        // Post.set('cuisine', unstructureData.cuisine7);
-        // Post.set('id', unstructureData.id7);
-        // Post.set('diet', unstructureData.diet7);
-        // Post.set('creditsText', unstructureData.creditsText7);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions7);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes7);
-
-        // Post.set('title', unstructureData.title8);
-        // Post.set('summary', unstructureData.summary8);
-        // Post.set('image', unstructureData.image8);
-        // Post.set('cuisine', unstructureData.cuisine8);
-        // Post.set('id', unstructureData.id8);
-        // Post.set('diet', unstructureData.diet8);
-        // Post.set('creditsText', unstructureData.creditsText8);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions8);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes8);
-
-        // Post.set('title', unstructureData.title9);
-        // Post.set('summary', unstructureData.summary9);
-        // Post.set('image', unstructureData.image9);
-        // Post.set('cuisine', unstructureData.cuisine9);
-        // Post.set('id', unstructureData.id9);
-        // Post.set('diet', unstructureData.diet9);
-        // Post.set('creditsText', unstructureData.creditsText9);
-        // Post.set('analyzedInstructions', unstructureData.analyzedInstructions9);
-        // Post.set('readyInMinutes', unstructureData.readyInMinutes9);
-
-
-  //       await Post.save();
-  //       return true;
-  //       alert('Post saved!');
-  //     } catch (error) {
-  //       console.log('Error saving new person: ', error);
-  //       return false;
-  //     }
-  //   })()
-
-  // }, [unstructureData])
-  // console.log(unstructureData.title0);
-
-  // console.log(unstructureData.results[0].creditsText);
-
-  
-
-
-  // const resultsPost = unstructureData.results;
-
   
 
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path='/login'>
-            <Navbar showLoguin={showLoguin} />
+            <Navbar />
             <Login />
           </Route>
           <Route path='/admin' component={Admin} />

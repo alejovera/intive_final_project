@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 
-function Navbar({}) {
+function Navbar() {
 
     const [userLoggued, setUserLoggued] = useState(false)
     const [userEmail, setUserEmail] = useState('')
@@ -13,10 +13,8 @@ function Navbar({}) {
         if (user) {
           setUserLoggued(true)
           setUserEmail(user.email)
-          // ...
         } else {
-            // console.log(user);
-            // console.log('User not logued');
+
         }
       });
 

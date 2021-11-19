@@ -18,8 +18,33 @@
     font-family: var(--ff-intive2);
     font-weight: 400;
 }
+.delete-button__post {
+    width: 200px;
+    border: none;
+    font-family: var(--ff-intive2);
+    display: flex;
+    color: var(--error-color);
+    padding: 1em 2em;
+    font-size: 14px;
+    font-weight: 700;
+    align-items: center;
+    border-radius: 1em;
+    border: 2px solid var(--error-color);
+    justify-content: space-between;
+    background: var(--white);
+    margin-top: 1em;
+}
+.delete-button__post:hover {
+    background: var(--error-color);
+    color: var(--white);
+    scale: 1.1;
+    border: var(--white);
+}
+.delete-button__post:hover > .redcross {
+    color: var(--white);
+}
 .redcross {
-    padding-top: 0.5em;
+    color: var(--error-color);
 }
 .redcross:hover {
     font-size: 2.2em;
@@ -32,7 +57,8 @@
 }
 .small-post__img {
     width: 100%;
-    object-fit: contain;
+    height: 250px !important;
+    object-fit: cover;
 }
 .small-post__title {
     margin: 15px 0;
