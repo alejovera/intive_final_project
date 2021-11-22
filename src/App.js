@@ -11,360 +11,1832 @@ import Parse from 'parse/dist/parse'
 
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar';
-const PARSE_APPLICATION_ID = 'eiafq36mzdNNl7pmDx1CB4m4YPll9Yjbhi5sk9Io';
+import { User } from 'parse';
+const PARSE_APPLICATION_ID = '7fIObWv2y3pdRwB7kRQwNeB11DMWd38Yv34x39ZC';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
-const PARSE_JAVASCRIPT_KEY = 'Z98ycVRHgEESrWg2SboMOznCtpI1ihePTR4x6qvA';
+const PARSE_JAVASCRIPT_KEY = 'Gp4VPYleyXPnUNPazxJ2SmdKAEaIBFblqILllKfq';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
 
 
 const API_KEY = 'e97329be8b32403880bf659279fa5ae9';
-const numberOfPosts = 1
+const numberOfPosts = 10
 
 function App() {
 
-  const [unstructureData, setUnstructureData] = useState()
-
-  // const fetchPosts = () => {
-  // }
-
-  useEffect(() => {
-    // fetchPosts()
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?&addRecipeInformation=true&number=${numberOfPosts}&diet=true&summary=true&apiKey=${API_KEY}`)
-      .then(res => res.json())
-      .then(data => setUnstructureData({
-        title0: data.results[0].title,
-        summary0: data.results[0].summary,
-        image0: data.results[0].image,
-        // readyInMinutes0: data.results[0].readyInMinutes,
-        // creditsText0: data.results[0].creditsText,
-        // // id0: data.results[0].id,
-        // cuisine0: data.results[0].cuisines,
-        // diet0: data.results[0].diets,
-  //       // analyzedInstructions0: data.results[0].analyzedInstructions,
-  //       title1: data.results[1].title,
-  //       summary1: data.results[1].summary,
-  //       image1: data.results[1].image,
-  //       readyInMinutes1: data.results[1].readyInMinutes,
-  //       creditsText1: data.results[1].creditsText,
-  //       // id1: data.results[1].id,
-  //       cuisine1: data.results[1].cuisines,
-  //       diet1: data.results[1].diets,
-        // analyzedInstructions1: data.results[1].analyzedInstructions,
-        // title2: data.results[2].title,
-        // summary2: data.results[2].summary,
-        // image2: data.results[2].image,
-        // readyInMinutes2: data.results[2].readyInMinutes,
-        // creditsText2: data.results[2].creditsText,
-        // // id2: data.results[2].id,
-        // cuisine2: data.results[2].cuisines,
-        // diet2: data.results[2].diets,
-        // analyzedInstructions2: data.results[2].analyzedInstructions,
-        // title3: data.results[3].title,
-        // summary3: data.results[3].summary,
-        // image3: data.results[3].image,
-        // readyInMinutes3: data.results[3].readyInMinutes,
-        // creditsText3: data.results[3].creditsText,
-        // // id3: data.results[3].id,
-        // cuisine3: data.results[3].cuisines,
-        // diet3: data.results[3].diets,
-        // analyzedInstructions3: data.results[3].analyzedInstructions,
-        // title4: data.results[4].title,
-        // summary4: data.results[4].summary,
-        // image4: data.results[4].image,
-        // readyInMinutes4: data.results[4].readyInMinutes,
-        // creditsText4: data.results[4].creditsText,
-        // // id4: data.results[4].id,
-        // cuisine4: data.results[4].cuisines,
-        // diet4: data.results[4].diets,
-        // analyzedInstructions4: data.results[4].analyzedInstructions,
-        // title5: data.results[5].title,
-        // summary5: data.results[5].summary,
-        // image5: data.results[5].image,
-        // readyInMinutes5: data.results[5].readyInMinutes,
-        // creditsText5: data.results[5].creditsText,
-        // // id5: data.results[5].id,
-        // cuisine5: data.results[5].cuisines,
-        // diet5: data.results[5].diets,
-        // analyzedInstructions5: data.results[5].analyzedInstructions,
-        // title6: data.results[6].title,
-        // summary6: data.results[6].summary,
-        // image6: data.results[6].image,
-        // readyInMinutes6: data.results[6].readyInMinutes,
-        // creditsText6: data.results[6].creditsText,
-        // // id6: data.results[6].id,
-        // cuisine6: data.results[6].cuisines,
-        // diet6: data.results[6].diets,
-        // analyzedInstructions6: data.results[6].analyzedInstructions,
-        // title7: data.results[7].title,
-        // summary7: data.results[7].summary,
-        // image7: data.results[7].image,
-        // readyInMinutes7: data.results[7].readyInMinutes,
-        // creditsText7: data.results[7].creditsText,
-        // // id7: data.results[7].id,
-        // cuisine7: data.results[7].cuisines,
-        // diet7: data.results[7].diets,
-        // analyzedInstructions7: data.results[7].analyzedInstructions,
-        // title8: data.results[8].title,
-        // summary8: data.results[8].summary,
-        // image8: data.results[8].image,
-        // readyInMinutes8: data.results[8].readyInMinutes,
-        // creditsText8: data.results[8].creditsText,
-        // // id8: data.results[8].id,
-        // cuisine8: data.results[8].cuisines,
-        // diet8: data.results[8].diets,
-        // analyzedInstructions8: data.results[8].analyzedInstructions,
-        // title9: data.results[9].title,
-        // summary9: data.results[9].summary,
-        // image9: data.results[9].image,
-        // readyInMinutes9: data.results[9].readyInMinutes,
-        // creditsText9: data.results[9].creditsText,
-        // // id9: data.results[9].id,
-        // cuisine9: data.results[9].cuisines,
-        // diet9: data.results[9].diets,
-        // analyzedInstructions9: data.results[9].analyzedInstructions,
-    }))
-    
-      addPost1()
-      // addPost2()
-      // addPost3()
-  //     // addPost4()
-  //     // addPost5()
-  //     // addPost6()
-  //     // addPost7()
-  //     // addPost8()
-  //     // addPost9()
-  //     // addPost10()
-
-  }, [])
+  const data = 
+    {
+        "results": [
+            {
+                "vegetarian": true,
+                "vegan": true,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": true,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 4,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 3689,
+                "spoonacularScore": 100.0,
+                "healthScore": 76.0,
+                "creditsText": "Full Belly Sisters",
+                "license": "CC BY-SA 3.0",
+                "sourceName": "Full Belly Sisters",
+                "pricePerServing": 112.39,
+                "id": 716426,
+                "title": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+                "readyInMinutes": 30,
+                "servings": 8,
+                "sourceUrl": "http://fullbellysisters.blogspot.com/2012/01/cauliflower-fried-rice-more-veggies.html",
+                "image": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Cauliflower, Brown Rice, and Vegetable Fried Rice might be a good recipe to expand your side dish recipe box. Watching your figure? This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe has <b>192 calories</b>, <b>7g of protein</b>, and <b>6g of fat</b> per serving. For <b>$1.12 per serving</b>, this recipe <b>covers 19%</b> of your daily requirements of vitamins and minerals. This recipe serves 8. This recipe from fullbellysisters.blogspot.com has 3689 fans. This recipe is typical of Chinese cuisine. From preparation to the plate, this recipe takes about <b>30 minutes</b>. Head to the store and pick up peas, broccoli, salt, and a few other things to make it today. Overall, this recipe earns an <b>awesome spoonacular score of 100%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/vegetable-fried-brown-rice-36199\">Vegetable Fried Brown Rice</a>, <a href=\"https://spoonacular.com/recipes/vegetable-fried-cauliflower-rice-933261\">Vegetable Fried Cauliflower Rice</a>, and <a href=\"https://spoonacular.com/recipes/easy-vegetable-fried-brown-rice-with-egg-802042\">Easy Vegetable Fried Brown Rice with Egg</a>.",
+                "cuisines": [
+                    "Chinese",
+                    "Asian"
+                ],
+                "dishTypes": [
+                    "side dish"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free",
+                    "lacto ovo vegetarian",
+                    "vegan"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Remove the cauliflower's tough stem and reserve for another use. Using a food processor, pulse cauliflower florets until they resemble rice or couscous. You should end up with around four cups of \"cauliflower rice.\"",
+                                "ingredients": [
+                                    {
+                                        "id": 10011135,
+                                        "name": "cauliflower florets",
+                                        "localizedName": "cauliflower florets",
+                                        "image": "cauliflower.jpg"
+                                    },
+                                    {
+                                        "id": 10111135,
+                                        "name": "cauliflower rice",
+                                        "localizedName": "cauliflower rice",
+                                        "image": "cauliflower.jpg"
+                                    },
+                                    {
+                                        "id": 11135,
+                                        "name": "cauliflower",
+                                        "localizedName": "cauliflower",
+                                        "image": "cauliflower.jpg"
+                                    },
+                                    {
+                                        "id": 20028,
+                                        "name": "couscous",
+                                        "localizedName": "couscous",
+                                        "image": "couscous-cooked.jpg"
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404771,
+                                        "name": "food processor",
+                                        "localizedName": "food processor",
+                                        "image": "food-processor.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 2,
+                                "step": "Heat 1T butter and 1T oil in a large skillet over medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 1001,
+                                        "name": "butter",
+                                        "localizedName": "butter",
+                                        "image": "butter-sliced.jpg"
+                                    },
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404645,
+                                        "name": "frying pan",
+                                        "localizedName": "frying pan",
+                                        "image": "pan.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 3,
+                                "step": "Add garlic and the white and light green pieces of scallion. Sauté about a minute.",
+                                "ingredients": [
+                                    {
+                                        "id": 11291,
+                                        "name": "green onions",
+                                        "localizedName": "green onions",
+                                        "image": "spring-onions.jpg"
+                                    },
+                                    {
+                                        "id": 11215,
+                                        "name": "garlic",
+                                        "localizedName": "garlic",
+                                        "image": "garlic.png"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 4,
+                                "step": "Add the cauliflower to the pan. Stir to coat with oil, then spread out in pan and let sit; you want it cook a bit and to caramelize (get a bit brown), which will bring out the sweetness. After a couple of minutes, stir and spread out again.",
+                                "ingredients": [
+                                    {
+                                        "id": 11135,
+                                        "name": "cauliflower",
+                                        "localizedName": "cauliflower",
+                                        "image": "cauliflower.jpg"
+                                    },
+                                    {
+                                        "id": 0,
+                                        "name": "spread",
+                                        "localizedName": "spread",
+                                        "image": ""
+                                    },
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404645,
+                                        "name": "frying pan",
+                                        "localizedName": "frying pan",
+                                        "image": "pan.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 5,
+                                "step": "Add cold rice (it separates easily, so it won't clump up during cooking), plus the additional grapeseed and coconut oil or butter. Raise heat to medium-high. Toss everything together and, again, spread the mixture out over the whole pan and press a bit into the bottom.",
+                                "ingredients": [
+                                    {
+                                        "id": 4047,
+                                        "name": "coconut oil",
+                                        "localizedName": "coconut oil",
+                                        "image": "oil-coconut.jpg"
+                                    },
+                                    {
+                                        "id": 1001,
+                                        "name": "butter",
+                                        "localizedName": "butter",
+                                        "image": "butter-sliced.jpg"
+                                    },
+                                    {
+                                        "id": 0,
+                                        "name": "spread",
+                                        "localizedName": "spread",
+                                        "image": ""
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404645,
+                                        "name": "frying pan",
+                                        "localizedName": "frying pan",
+                                        "image": "pan.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 6,
+                                "step": "Let it sit for about two minutes—so the rice can get toasted and a little crispy.",
+                                "ingredients": [
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 2,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 7,
+                                "step": "Add the peas and broccoli and stir again.",
+                                "ingredients": [
+                                    {
+                                        "id": 11090,
+                                        "name": "broccoli",
+                                        "localizedName": "broccoli",
+                                        "image": "broccoli.jpg"
+                                    },
+                                    {
+                                        "id": 11304,
+                                        "name": "peas",
+                                        "localizedName": "peas",
+                                        "image": "peas.jpg"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 8,
+                                "step": "Drizzle soy sauce and toasted sesame oil over rice.Cook for another minute or so and turn off heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 4058,
+                                        "name": "sesame oil",
+                                        "localizedName": "sesame oil",
+                                        "image": "sesame-oil.png"
+                                    },
+                                    {
+                                        "id": 16124,
+                                        "name": "soy sauce",
+                                        "localizedName": "soy sauce",
+                                        "image": "soy-sauce.jpg"
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 9,
+                                "step": "Add chopped scallion tops and toss.I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice.",
+                                "ingredients": [
+                                    {
+                                        "id": 12023,
+                                        "name": "sesame seeds",
+                                        "localizedName": "sesame seeds",
+                                        "image": "sesame-seeds.png"
+                                    },
+                                    {
+                                        "id": 16124,
+                                        "name": "soy sauce",
+                                        "localizedName": "soy sauce",
+                                        "image": "soy-sauce.jpg"
+                                    },
+                                    {
+                                        "id": 11291,
+                                        "name": "green onions",
+                                        "localizedName": "green onions",
+                                        "image": "spring-onions.jpg"
+                                    },
+                                    {
+                                        "id": 5006,
+                                        "name": "whole chicken",
+                                        "localizedName": "whole chicken",
+                                        "image": "whole-chicken.jpg"
+                                    },
+                                    {
+                                        "id": 18070,
+                                        "name": "toast",
+                                        "localizedName": "toast",
+                                        "image": "toast"
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404645,
+                                        "name": "frying pan",
+                                        "localizedName": "frying pan",
+                                        "image": "pan.png"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/cauliflower-brown-rice-and-vegetable-fried-rice-716426"
+            },
+            {
+                "vegetarian": true,
+                "vegan": true,
+                "glutenFree": false,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": true,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 19,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 1669,
+                "spoonacularScore": 99.0,
+                "healthScore": 78.0,
+                "creditsText": "Jen West",
+                "sourceName": "Pink When",
+                "pricePerServing": 83.23,
+                "id": 715594,
+                "title": "Homemade Garlic and Basil French Fries",
+                "readyInMinutes": 45,
+                "servings": 2,
+                "sourceUrl": "http://www.pinkwhen.com/homemade-french-fries/",
+                "image": "https://spoonacular.com/recipeImages/715594-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "The recipe Homemade Garlic and Basil French Fries is ready <b>in roughly 45 minutes</b> and is definitely a super <b>vegan</b> option for lovers of American food. One serving contains <b>596 calories</b>, <b>18g of protein</b>, and <b>15g of fat</b>. For <b>83 cents per serving</b>, you get a side dish that serves 2. Several people made this recipe, and 1669 would say it hit the spot. If you have garlic salt, flour, garlic powder, and a few other ingredients on hand, you can make it. All things considered, we decided this recipe <b>deserves a spoonacular score of 100%</b>. This score is outstanding. Try <a href=\"https://spoonacular.com/recipes/homemade-french-fries-with-fresh-garlic-and-dill-494220\">Homemade French Fries with Fresh Garlic and Dill</a>, <a href=\"https://spoonacular.com/recipes/roasted-garlic-french-fries-519898\">Roasted Garlic French Fries</a>, and <a href=\"https://spoonacular.com/recipes/sweet-potato-fries-with-basil-salt-and-garlic-mayonnaise-120735\">Sweet Potato Fries With Basil Salt and Garlic Mayonnaise</a> for similar recipes.",
+                "cuisines": [
+                    "American"
+                ],
+                "dishTypes": [
+                    "lunch",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "dairy free",
+                    "lacto ovo vegetarian",
+                    "vegan"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [],
+                "spoonacularSourceUrl": "https://spoonacular.com/homemade-garlic-and-basil-french-fries-715594"
+            },
+            {
+                "vegetarian": true,
+                "vegan": false,
+                "glutenFree": false,
+                "dairyFree": false,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": true,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 15,
+                "gaps": "no",
+                "lowFodmap": false,
+                "preparationMinutes": 5,
+                "cookingMinutes": 0,
+                "aggregateLikes": 689,
+                "spoonacularScore": 99.0,
+                "healthScore": 63.0,
+                "creditsText": "Jen West",
+                "sourceName": "Pink When",
+                "pricePerServing": 204.29,
+                "id": 715497,
+                "title": "Berry Banana Breakfast Smoothie",
+                "readyInMinutes": 5,
+                "servings": 1,
+                "sourceUrl": "http://www.pinkwhen.com/berry-banana-breakfast-smoothie/",
+                "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "If you have around <b>5 minutes</b> to spend in the kitchen, Berry Banana Breakfast Smoothie might be a tremendous <b>lacto ovo vegetarian</b> recipe to try. This recipe makes 1 servings with <b>501 calories</b>, <b>21g of protein</b>, and <b>11g of fat</b> each. For <b>$2.19 per serving</b>, this recipe <b>covers 32%</b> of your daily requirements of vitamins and minerals. 688 people found this recipe to be tasty and satisfying. It is brought to you by Pink When. Head to the store and pick up graham crackers, soy milk, banana, and a few other things to make it today. It works well as a morn meal. Overall, this recipe earns a <b>super spoonacular score of 100%</b>. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-249239\">Berry Banana Breakfast Smoothie</a>, <a href=\"https://spoonacular.com/recipes/berry-and-banana-oat-breakfast-smoothie-626817\">Berry and Bananan Oat Breakfast Smoothie</a>, and <a href=\"https://spoonacular.com/recipes/berry-breakfast-smoothie-774875\">Berry Breakfast Smoothie</a>.",
+                "cuisines": [],
+                "dishTypes": [
+                    "morning meal",
+                    "brunch",
+                    "breakfast"
+                ],
+                "diets": [
+                    "lacto ovo vegetarian"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Take some yogurt in your favorite flavor and add 1 container to your blender.",
+                                "ingredients": [
+                                    {
+                                        "id": 1116,
+                                        "name": "yogurt",
+                                        "localizedName": "yogurt",
+                                        "image": "plain-yogurt.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404726,
+                                        "name": "blender",
+                                        "localizedName": "blender",
+                                        "image": "blender.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 2,
+                                "step": "Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.",
+                                "ingredients": [
+                                    {
+                                        "id": 10018617,
+                                        "name": "graham cracker crumbs",
+                                        "localizedName": "graham cracker crumbs",
+                                        "image": "graham-crackers.jpg"
+                                    },
+                                    {
+                                        "id": 16223,
+                                        "name": "soymilk",
+                                        "localizedName": "soymilk",
+                                        "image": "soy-milk.jpg"
+                                    },
+                                    {
+                                        "id": 1009054,
+                                        "name": "berries",
+                                        "localizedName": "berries",
+                                        "image": "berries-mixed.jpg"
+                                    },
+                                    {
+                                        "id": 9040,
+                                        "name": "banana",
+                                        "localizedName": "banana",
+                                        "image": "bananas.jpg"
+                                    }
+                                ],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/berry-banana-breakfast-smoothie-715497"
+            },
+            {
+                "vegetarian": true,
+                "vegan": true,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": false,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 5,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 19,
+                "spoonacularScore": 99.0,
+                "healthScore": 93.0,
+                "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+                "license": "CC BY 3.0",
+                "sourceName": "Foodista",
+                "pricePerServing": 69.09,
+                "id": 644387,
+                "title": "Garlicky Kale",
+                "readyInMinutes": 45,
+                "servings": 2,
+                "sourceUrl": "http://www.foodista.com/recipe/J2FTJBF7/garlicky-kale",
+                "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Garlicky Kale might be just the side dish you are searching for. This caveman, gluten free, primal, and whole 30 recipe serves 2 and costs <b>69 cents per serving</b>. One serving contains <b>179 calories</b>, <b>3g of protein</b>, and <b>15g of fat</b>. A few people made this recipe, and 17 would say it hit the spot. If you have olive oil, garlic, curly kale, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes around <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is awesome. Try <a href=\"https://spoonacular.com/recipes/garlicky-kale-248759\">Garlicky Kale</a>, <a href=\"https://spoonacular.com/recipes/garlicky-kale-14910\">Garlicky Kale</a>, and <a href=\"https://spoonacular.com/recipes/garlicky-kale-crostini-15010\">Garlicky Kale Crostini</a> for similar recipes.",
+                "cuisines": [],
+                "dishTypes": [
+                    "side dish"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free",
+                    "paleolithic",
+                    "lacto ovo vegetarian",
+                    "primal",
+                    "vegan"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Heat the olive oil in a large pot over medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 4053,
+                                        "name": "olive oil",
+                                        "localizedName": "olive oil",
+                                        "image": "olive-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404752,
+                                        "name": "pot",
+                                        "localizedName": "pot",
+                                        "image": "stock-pot.jpg"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 2,
+                                "step": "Add the kale and cover.Stir occasionally until the volume of the kale is reduced by half. Uncover.",
+                                "ingredients": [
+                                    {
+                                        "id": 11233,
+                                        "name": "kale",
+                                        "localizedName": "kale",
+                                        "image": "kale.jpg"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 3,
+                                "step": "Add garlic and basalmic.Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed.",
+                                "ingredients": [
+                                    {
+                                        "id": 2053,
+                                        "name": "vinegar",
+                                        "localizedName": "vinegar",
+                                        "image": "vinegar-(white).jpg"
+                                    },
+                                    {
+                                        "id": 11215,
+                                        "name": "garlic",
+                                        "localizedName": "garlic",
+                                        "image": "garlic.png"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 4,
+                                "step": "Serve hot.",
+                                "ingredients": [],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/garlicky-kale-644387"
+            },
+            {
+                "vegetarian": false,
+                "vegan": false,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": false,
+                "cheap": false,
+                "veryPopular": true,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 5,
+                "gaps": "no",
+                "lowFodmap": false,
+                "preparationMinutes": 10,
+                "cookingMinutes": 360,
+                "aggregateLikes": 1429,
+                "spoonacularScore": 99.0,
+                "healthScore": 26.0,
+                "creditsText": "Jen West",
+                "sourceName": "Pink When",
+                "pricePerServing": 183.68,
+                "id": 715392,
+                "title": "Easy Slow Cooker Chicken Tortilla Soup",
+                "readyInMinutes": 370,
+                "servings": 8,
+                "sourceUrl": "https://www.pinkwhen.com/chicken-tortilla-soup-slow-cooker/",
+                "image": "https://spoonacular.com/recipeImages/715392-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Easy Slow Cooker Chicken Tortilla Soup is a <b>gluten free and dairy free</b> main course. This recipe serves 8 and costs $1.84 per serving. One serving contains <b>288 calories</b>, <b>32g of protein</b>, and <b>4g of fat</b>. 1429 people were impressed by this recipe. A mixture of chicken breast, chilis, tomatoes, and a handful of other ingredients are all it takes to make this recipe so delicious. It will be a hit at your <b>Autumn</b> event. From preparation to the plate, this recipe takes around <b>6 hours and 10 minutes</b>. It is brought to you by Pink When. Taking all factors into account, this recipe <b>earns a spoonacular score of 0%</b>, which is improvable. <a href=\"https://spoonacular.com/recipes/easy-slow-cooker-chicken-tortilla-soup-577486\">Easy Slow Cooker Chicken Tortilla Soup</a>, <a href=\"https://spoonacular.com/recipes/slow-cooker-chicken-tortilla-soup-1310515\">Slow Cooker Chicken Tortilla Soup</a>, and <a href=\"https://spoonacular.com/recipes/slow-cooker-chicken-tortilla-soup-527757\">Slow-Cooker Chicken Tortilla Soup</a> are very similar to this recipe.",
+                "cuisines": [],
+                "dishTypes": [
+                    "lunch",
+                    "soup",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free"
+                ],
+                "occasions": [
+                    "fall",
+                    "winter"
+                ],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Add all of your ingredients into the slow cooker and then cook on low for 6 hours.",
+                                "ingredients": [],
+                                "equipment": [
+                                    {
+                                        "id": 404718,
+                                        "name": "slow cooker",
+                                        "localizedName": "slow cooker",
+                                        "image": "slow-cooker.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 360,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 2,
+                                "step": "Once finished cooking, scoop into serving bowls and serve with tortilla chips, sour cream, cheese, avocado, or any of your favorite toppings.",
+                                "ingredients": [
+                                    {
+                                        "id": 19056,
+                                        "name": "tortilla chips",
+                                        "localizedName": "tortilla chips",
+                                        "image": "tortilla-chips.jpg"
+                                    },
+                                    {
+                                        "id": 1056,
+                                        "name": "sour cream",
+                                        "localizedName": "sour cream",
+                                        "image": "sour-cream.jpg"
+                                    },
+                                    {
+                                        "id": 9037,
+                                        "name": "avocado",
+                                        "localizedName": "avocado",
+                                        "image": "avocado.jpg"
+                                    },
+                                    {
+                                        "id": 1041009,
+                                        "name": "cheese",
+                                        "localizedName": "cheese",
+                                        "image": "cheddar-cheese.png"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404783,
+                                        "name": "bowl",
+                                        "localizedName": "bowl",
+                                        "image": "bowl.jpg"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/easy-slow-cooker-chicken-tortilla-soup-715392"
+            },
+            {
+                "vegetarian": false,
+                "vegan": false,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": false,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 32,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 124,
+                "spoonacularScore": 99.0,
+                "healthScore": 100.0,
+                "creditsText": "Afrolems",
+                "license": "CC BY 4.0",
+                "sourceName": "Afrolems",
+                "pricePerServing": 355.78,
+                "id": 716268,
+                "title": "African Chicken Peanut Stew",
+                "readyInMinutes": 45,
+                "servings": 1,
+                "sourceUrl": "http://www.afrolems.com/2014/03/18/african-chicken-peanut-stew-recipe/",
+                "image": "https://spoonacular.com/recipeImages/716268-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Need a <b>gluten free and dairy free main course</b>? African Chicken Peanut Stew could be a tremendous recipe to try. This recipe makes 1 servings with <b>1377 calories</b>, <b>75g of protein</b>, and <b>102g of fat</b> each. For <b>$3.87 per serving</b>, this recipe <b>covers 62%</b> of your daily requirements of vitamins and minerals. It can be enjoyed any time, but it is especially good for <b>Autumn</b>. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. 124 people have tried and liked this recipe. Head to the store and pick up bell peppers, tomato, pepper, and a few other things to make it today. To use up the tomato you could follow this main course with the <a href=\"https://spoonacular.com/recipes/pink-peony-popcorn-balls-129348\">Pink Peony Popcorn Balls</a> as a dessert. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is super. Try <a href=\"https://spoonacular.com/recipes/african-chicken-peanut-stew-245461\">African Chicken Peanut Stew</a>, <a href=\"https://spoonacular.com/recipes/west-african-peanut-chicken-stew-163315\">West African Peanut-Chicken Stew</a>, and <a href=\"https://spoonacular.com/recipes/one-pot-african-peanut-stew-854978\">One-Pot African Peanut Stew</a> for similar recipes.",
+                "cuisines": [
+                    "African"
+                ],
+                "dishTypes": [
+                    "lunch",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free"
+                ],
+                "occasions": [
+                    "fall",
+                    "winter"
+                ],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Season and Boil the Chicken for 10 minutes with salt, pepper, seasoning, a handful of onions.Once the chicken is ready, in the same stock, Boil the chopped sweet potatoes till its almost cooked. Save the stock in a separate Bowl and the chicken and potatoes in a separate Bowl as well.In a pot, heat up one cooking spoon of oil and fry the chicken till it Browns. Take it out and heat up the other 1.5 cooking spoons of oil and fry the onions, tomatoes Both chopped and Blended, ginger and garlic.",
+                                "ingredients": [
+                                    {
+                                        "id": 11507,
+                                        "name": "sweet potato",
+                                        "localizedName": "sweet potato",
+                                        "image": "sweet-potato.png"
+                                    },
+                                    {
+                                        "id": 1042027,
+                                        "name": "seasoning",
+                                        "localizedName": "seasoning",
+                                        "image": "seasoning.png"
+                                    },
+                                    {
+                                        "id": 11352,
+                                        "name": "potato",
+                                        "localizedName": "potato",
+                                        "image": "potatoes-yukon-gold.png"
+                                    },
+                                    {
+                                        "id": 11529,
+                                        "name": "tomato",
+                                        "localizedName": "tomato",
+                                        "image": "tomato.png"
+                                    },
+                                    {
+                                        "id": 5006,
+                                        "name": "whole chicken",
+                                        "localizedName": "whole chicken",
+                                        "image": "whole-chicken.jpg"
+                                    },
+                                    {
+                                        "id": 11215,
+                                        "name": "garlic",
+                                        "localizedName": "garlic",
+                                        "image": "garlic.png"
+                                    },
+                                    {
+                                        "id": 11216,
+                                        "name": "ginger",
+                                        "localizedName": "ginger",
+                                        "image": "ginger.png"
+                                    },
+                                    {
+                                        "id": 11282,
+                                        "name": "onion",
+                                        "localizedName": "onion",
+                                        "image": "brown-onion.png"
+                                    },
+                                    {
+                                        "id": 1002030,
+                                        "name": "pepper",
+                                        "localizedName": "pepper",
+                                        "image": "pepper.jpg"
+                                    },
+                                    {
+                                        "id": 1006615,
+                                        "name": "stock",
+                                        "localizedName": "stock",
+                                        "image": "chicken-broth.png"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    },
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404783,
+                                        "name": "bowl",
+                                        "localizedName": "bowl",
+                                        "image": "bowl.jpg"
+                                    },
+                                    {
+                                        "id": 404752,
+                                        "name": "pot",
+                                        "localizedName": "pot",
+                                        "image": "stock-pot.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 10,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 2,
+                                "step": "Add your seasoning, curry, thyme, parsley, salt and pepper to the pot.",
+                                "ingredients": [
+                                    {
+                                        "id": 1102047,
+                                        "name": "salt and pepper",
+                                        "localizedName": "salt and pepper",
+                                        "image": "salt-and-pepper.jpg"
+                                    },
+                                    {
+                                        "id": 1042027,
+                                        "name": "seasoning",
+                                        "localizedName": "seasoning",
+                                        "image": "seasoning.png"
+                                    },
+                                    {
+                                        "id": 11297,
+                                        "name": "parsley",
+                                        "localizedName": "parsley",
+                                        "image": "parsley.jpg"
+                                    },
+                                    {
+                                        "id": 2015,
+                                        "name": "curry powder",
+                                        "localizedName": "curry powder",
+                                        "image": "curry-powder.jpg"
+                                    },
+                                    {
+                                        "id": 2049,
+                                        "name": "thyme",
+                                        "localizedName": "thyme",
+                                        "image": "thyme.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404752,
+                                        "name": "pot",
+                                        "localizedName": "pot",
+                                        "image": "stock-pot.jpg"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 3,
+                                "step": "Pour in your stock, chicken and potatoes to cook further.Stir in your peanut Butter and allow to cook for 10 minutes on low heat.If your sauce gets too thick, add a little water to it.",
+                                "ingredients": [
+                                    {
+                                        "id": 16098,
+                                        "name": "peanut butter",
+                                        "localizedName": "peanut butter",
+                                        "image": "peanut-butter.png"
+                                    },
+                                    {
+                                        "id": 11352,
+                                        "name": "potato",
+                                        "localizedName": "potato",
+                                        "image": "potatoes-yukon-gold.png"
+                                    },
+                                    {
+                                        "id": 5006,
+                                        "name": "whole chicken",
+                                        "localizedName": "whole chicken",
+                                        "image": "whole-chicken.jpg"
+                                    },
+                                    {
+                                        "id": 0,
+                                        "name": "sauce",
+                                        "localizedName": "sauce",
+                                        "image": ""
+                                    },
+                                    {
+                                        "id": 1006615,
+                                        "name": "stock",
+                                        "localizedName": "stock",
+                                        "image": "chicken-broth.png"
+                                    },
+                                    {
+                                        "id": 14412,
+                                        "name": "water",
+                                        "localizedName": "water",
+                                        "image": "water.png"
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 10,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 4,
+                                "step": "Serve with white rice or more sweet potatoes.You could also garnish the dish with Bell peppers.   ",
+                                "ingredients": [
+                                    {
+                                        "id": 11507,
+                                        "name": "sweet potato",
+                                        "localizedName": "sweet potato",
+                                        "image": "sweet-potato.png"
+                                    },
+                                    {
+                                        "id": 10211821,
+                                        "name": "bell pepper",
+                                        "localizedName": "bell pepper",
+                                        "image": "bell-pepper-orange.png"
+                                    },
+                                    {
+                                        "id": 10220444,
+                                        "name": "white rice",
+                                        "localizedName": "white rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/african-chicken-peanut-stew-716268"
+            },
+            {
+                "vegetarian": false,
+                "vegan": false,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": true,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 3,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 361,
+                "spoonacularScore": 99.0,
+                "healthScore": 89.0,
+                "creditsText": "Afrolems",
+                "license": "CC BY 4.0",
+                "sourceName": "Afrolems",
+                "pricePerServing": 908.06,
+                "id": 716381,
+                "title": "Nigerian Snail Stew",
+                "readyInMinutes": 45,
+                "servings": 1,
+                "sourceUrl": "http://www.afrolems.com/2015/12/08/nigerian-snail-stew/",
+                "image": "https://spoonacular.com/recipeImages/716381-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Nigerian Snail Stew might be just the main course you are searching for. For <b>$9.08 per serving</b>, this recipe <b>covers 45%</b> of your daily requirements of vitamins and minerals. This recipe makes 1 servings with <b>363 calories</b>, <b>23g of protein</b>, and <b>5g of fat</b> each. Plenty of people made this recipe, and 361 would say it hit the spot. If you have chili powder, snails, limes, and a few other ingredients on hand, you can make it. To use up the ice cubes you could follow this main course with the <a href=\"https://spoonacular.com/recipes/nectarine-blackberry-and-pecan-sundaes-50465\">Nectarine, Blackberry, and Pecan Sundaes</a> as a dessert. It can be enjoyed any time, but it is especially good for <b>Autumn</b>. It is a good option if you're following a <b>gluten free, dairy free, and whole 30</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is spectacular. Try <a href=\"https://spoonacular.com/recipes/nigerian-kidney-bean-stew-with-a-peanut-sauce-112643\">Nigerian Kidney Bean Stew With a Peanut Sauce</a>, <a href=\"https://spoonacular.com/recipes/little-snail-rolls-369096\">Little Snail Rolls</a>, and <a href=\"https://spoonacular.com/recipes/maple-snail-cookies-76877\">Maple Snail Cookies</a> for similar recipes.",
+                "cuisines": [],
+                "dishTypes": [
+                    "lunch",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free"
+                ],
+                "occasions": [
+                    "fall",
+                    "winter"
+                ],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "In a bowl, wash the snails with lime and salt till all the slime is gone.",
+                                "ingredients": [
+                                    {
+                                        "id": 90560,
+                                        "name": "escargot",
+                                        "localizedName": "escargot",
+                                        "image": "escargot.png"
+                                    },
+                                    {
+                                        "id": 9159,
+                                        "name": "lime",
+                                        "localizedName": "lime",
+                                        "image": "lime.jpg"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404783,
+                                        "name": "bowl",
+                                        "localizedName": "bowl",
+                                        "image": "bowl.jpg"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 2,
+                                "step": "Place the snail in a pot with the chili powder, seasoning cubes, chopped garlic, 1/2 of the onion(chopped) and a pinch of salt and bring to boil for about 15-18 minutes.In a separate pot, place the tomatoes, bell pepper, scotch bonnet peppers, crush with a wooden spoon till some of the juices come out and bring to boil till they are all soft on low heat. (This helps to dry up some of the extra water from the tomatoes)In a pot, pour in your oil, cut your onions in rings and fry in the hot oil on medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 0,
+                                        "name": "seasoning cube",
+                                        "localizedName": "seasoning cube",
+                                        "image": "stock-cube.jpg"
+                                    },
+                                    {
+                                        "id": 2009,
+                                        "name": "chili powder",
+                                        "localizedName": "chili powder",
+                                        "image": "chili-powder.jpg"
+                                    },
+                                    {
+                                        "id": 10211821,
+                                        "name": "bell pepper",
+                                        "localizedName": "bell pepper",
+                                        "image": "bell-pepper-orange.png"
+                                    },
+                                    {
+                                        "id": 11529,
+                                        "name": "tomato",
+                                        "localizedName": "tomato",
+                                        "image": "tomato.png"
+                                    },
+                                    {
+                                        "id": 10111333,
+                                        "name": "peppers",
+                                        "localizedName": "peppers",
+                                        "image": "green-pepper.jpg"
+                                    },
+                                    {
+                                        "id": 11215,
+                                        "name": "garlic",
+                                        "localizedName": "garlic",
+                                        "image": "garlic.png"
+                                    },
+                                    {
+                                        "id": 11282,
+                                        "name": "onion",
+                                        "localizedName": "onion",
+                                        "image": "brown-onion.png"
+                                    },
+                                    {
+                                        "id": 10014052,
+                                        "name": "scotch whiskey",
+                                        "localizedName": "scotch whiskey",
+                                        "image": "whiskey-bottle.jpg"
+                                    },
+                                    {
+                                        "id": 14412,
+                                        "name": "water",
+                                        "localizedName": "water",
+                                        "image": "water.png"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    },
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404732,
+                                        "name": "wooden spoon",
+                                        "localizedName": "wooden spoon",
+                                        "image": "wooden-spoon.jpg"
+                                    },
+                                    {
+                                        "id": 404752,
+                                        "name": "pot",
+                                        "localizedName": "pot",
+                                        "image": "stock-pot.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 18,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 3,
+                                "step": "Pour in your tomato-pepper mix and allow to fry for about 8-10 minutes on low heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 1002030,
+                                        "name": "pepper",
+                                        "localizedName": "pepper",
+                                        "image": "pepper.jpg"
+                                    },
+                                    {
+                                        "id": 11529,
+                                        "name": "tomato",
+                                        "localizedName": "tomato",
+                                        "image": "tomato.png"
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 10,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 4,
+                                "step": "Pour in the left-over stock from the snail and allow to cook for 5 more minutes on medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 1006615,
+                                        "name": "stock",
+                                        "localizedName": "stock",
+                                        "image": "chicken-broth.png"
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 5,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 5,
+                                "step": "Add your seasoning cubes and taste for salt.",
+                                "ingredients": [
+                                    {
+                                        "id": 0,
+                                        "name": "seasoning cube",
+                                        "localizedName": "seasoning cube",
+                                        "image": "stock-cube.jpg"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 6,
+                                "step": "Add your snails and stir in and allow to stew for 2-4 minutes more on medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 90560,
+                                        "name": "escargot",
+                                        "localizedName": "escargot",
+                                        "image": "escargot.png"
+                                    },
+                                    {
+                                        "id": 0,
+                                        "name": "stew",
+                                        "localizedName": "stew",
+                                        "image": ""
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 4,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 7,
+                                "step": "Serve with Rice, Pasta, Plantain, Yams or Potatoes.",
+                                "ingredients": [
+                                    {
+                                        "id": 9277,
+                                        "name": "plantain",
+                                        "localizedName": "plantain",
+                                        "image": "plantains.jpg"
+                                    },
+                                    {
+                                        "id": 11352,
+                                        "name": "potato",
+                                        "localizedName": "potato",
+                                        "image": "potatoes-yukon-gold.png"
+                                    },
+                                    {
+                                        "id": 20420,
+                                        "name": "pasta",
+                                        "localizedName": "pasta",
+                                        "image": "fusilli.jpg"
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    },
+                                    {
+                                        "id": 11601,
+                                        "name": "yam",
+                                        "localizedName": "yam",
+                                        "image": "sweet-potato.png"
+                                    }
+                                ],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/nigerian-snail-stew-716381"
+            },
+            {
+                "vegetarian": true,
+                "vegan": true,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": false,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 13,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 53,
+                "spoonacularScore": 99.0,
+                "healthScore": 100.0,
+                "creditsText": "Lisa's Vegetarian Kitchen",
+                "license": "CC BY 2.5 CA",
+                "sourceName": "Food and Spice",
+                "pricePerServing": 185.77,
+                "id": 782601,
+                "title": "Red Kidney Bean Jambalaya",
+                "readyInMinutes": 45,
+                "servings": 6,
+                "sourceUrl": "http://foodandspice.blogspot.com/2016/05/red-kidney-bean-jambalaya.html",
+                "image": "https://spoonacular.com/recipeImages/782601-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Red Kidney Bean Jambalaya might be just the <b>Creole</b> recipe you are searching for. One serving contains <b>538 calories</b>, <b>21g of protein</b>, and <b>8g of fat</b>. For <b>$1.69 per serving</b>, this recipe <b>covers 34%</b> of your daily requirements of vitamins and minerals. This recipe from foodandspice.blogspot.com has 52 fans. A few people really liked this main course. Head to the store and pick up brown rice, vegetable stock, liquid smoke, and a few other things to make it today. To use up the sea salt you could follow this main course with the <a href=\"https://spoonacular.com/recipes/raspberry-sea-salt-brownies-494161\">Raspberry Sea Salt Brownies</a> as a dessert. From preparation to the plate, this recipe takes about <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is spectacular. Try <a href=\"https://spoonacular.com/recipes/red-kidney-bean-dip-148569\">Red Kidney Bean Dip</a>, <a href=\"https://spoonacular.com/recipes/kidney-bean-dip-119992\">Kidney Bean Dip</a>, and <a href=\"https://spoonacular.com/recipes/red-kidney-bean-curry-80686\">Red Kidney Bean Curry</a> for similar recipes.",
+                "cuisines": [
+                    "Creole",
+                    "Cajun"
+                ],
+                "dishTypes": [
+                    "lunch",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free",
+                    "lacto ovo vegetarian",
+                    "vegan"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "Rinse the kidney beans and brown rice separately. Cover the kidney beans with water and soak for 8 hours or overnight. In a separate bowl, cover the brown rice with water and soak for 8 hours or overnight.",
+                                "ingredients": [
+                                    {
+                                        "id": 16033,
+                                        "name": "kidney beans",
+                                        "localizedName": "kidney beans",
+                                        "image": "kidney-beans.jpg"
+                                    },
+                                    {
+                                        "id": 20040,
+                                        "name": "brown rice",
+                                        "localizedName": "brown rice",
+                                        "image": "uncooked-brown-rice.png"
+                                    },
+                                    {
+                                        "id": 14412,
+                                        "name": "water",
+                                        "localizedName": "water",
+                                        "image": "water.png"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404783,
+                                        "name": "bowl",
+                                        "localizedName": "bowl",
+                                        "image": "bowl.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 960,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 2,
+                                "step": "Drain and rinse the kidney beans, then transfer to a medium saucepan and cover with fresh water. Bring to a boil, reduce heat to medium-low, cover, and simmer for 1 hour or until just tender but not falling apart.",
+                                "ingredients": [
+                                    {
+                                        "id": 16033,
+                                        "name": "kidney beans",
+                                        "localizedName": "kidney beans",
+                                        "image": "kidney-beans.jpg"
+                                    },
+                                    {
+                                        "id": 14412,
+                                        "name": "water",
+                                        "localizedName": "water",
+                                        "image": "water.png"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404669,
+                                        "name": "sauce pan",
+                                        "localizedName": "sauce pan",
+                                        "image": "sauce-pan.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 60,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 3,
+                                "step": "Drain and set aside.",
+                                "ingredients": [],
+                                "equipment": []
+                            },
+                            {
+                                "number": 4,
+                                "step": "Heat the oil in a large saucepan over medium heat. When hot, add the onion and saut for 5 minutes. Now add the garlic, carrots, celery and green beans, and stir for another 5 minutes. Next add the tomatoes, red pepper, eggplant, sage, thyme, marjoram and celery seed, and continue to stir for another few minutes.",
+                                "ingredients": [
+                                    {
+                                        "id": 2007,
+                                        "name": "celery seed",
+                                        "localizedName": "celery seed",
+                                        "image": "celery-seed.jpg"
+                                    },
+                                    {
+                                        "id": 11052,
+                                        "name": "green beans",
+                                        "localizedName": "green beans",
+                                        "image": "green-beans-or-string-beans.jpg"
+                                    },
+                                    {
+                                        "id": 11821,
+                                        "name": "red pepper",
+                                        "localizedName": "red pepper",
+                                        "image": "red-pepper.jpg"
+                                    },
+                                    {
+                                        "id": 11209,
+                                        "name": "eggplant",
+                                        "localizedName": "eggplant",
+                                        "image": "eggplant.png"
+                                    },
+                                    {
+                                        "id": 2023,
+                                        "name": "marjoram",
+                                        "localizedName": "marjoram",
+                                        "image": "marjoram.jpg"
+                                    },
+                                    {
+                                        "id": 11529,
+                                        "name": "tomato",
+                                        "localizedName": "tomato",
+                                        "image": "tomato.png"
+                                    },
+                                    {
+                                        "id": 11124,
+                                        "name": "carrot",
+                                        "localizedName": "carrot",
+                                        "image": "sliced-carrot.png"
+                                    },
+                                    {
+                                        "id": 11143,
+                                        "name": "celery",
+                                        "localizedName": "celery",
+                                        "image": "celery.jpg"
+                                    },
+                                    {
+                                        "id": 11215,
+                                        "name": "garlic",
+                                        "localizedName": "garlic",
+                                        "image": "garlic.png"
+                                    },
+                                    {
+                                        "id": 11282,
+                                        "name": "onion",
+                                        "localizedName": "onion",
+                                        "image": "brown-onion.png"
+                                    },
+                                    {
+                                        "id": 2049,
+                                        "name": "thyme",
+                                        "localizedName": "thyme",
+                                        "image": "thyme.jpg"
+                                    },
+                                    {
+                                        "id": 99226,
+                                        "name": "sage",
+                                        "localizedName": "sage",
+                                        "image": "fresh-sage.png"
+                                    },
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404669,
+                                        "name": "sauce pan",
+                                        "localizedName": "sauce pan",
+                                        "image": "sauce-pan.jpg"
+                                    }
+                                ],
+                                "length": {
+                                    "number": 10,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 5,
+                                "step": "Pour in the vegetable stock, liquid smoke, rice and the cooked kidney beans. Bring to a boil, reduce heat to medium low, cover, and cook, stirring occasionally, for 45 minutes or until the rice is tender.",
+                                "ingredients": [
+                                    {
+                                        "id": 6615,
+                                        "name": "vegetable stock",
+                                        "localizedName": "vegetable stock",
+                                        "image": "chicken-broth.png"
+                                    },
+                                    {
+                                        "id": 16033,
+                                        "name": "kidney beans",
+                                        "localizedName": "kidney beans",
+                                        "image": "kidney-beans.jpg"
+                                    },
+                                    {
+                                        "id": 93627,
+                                        "name": "liquid smoke",
+                                        "localizedName": "liquid smoke",
+                                        "image": "dark-sauce.jpg"
+                                    },
+                                    {
+                                        "id": 20444,
+                                        "name": "rice",
+                                        "localizedName": "rice",
+                                        "image": "uncooked-white-rice.png"
+                                    }
+                                ],
+                                "equipment": [],
+                                "length": {
+                                    "number": 45,
+                                    "unit": "minutes"
+                                }
+                            },
+                            {
+                                "number": 6,
+                                "step": "Add water as necessary if the stew becomes too dry.Season with sriracha, salt and pepper, and taste for seasoning  add more liquid smoke, sriracha, salt, pepper or herbs as desired.",
+                                "ingredients": [
+                                    {
+                                        "id": 1102047,
+                                        "name": "salt and pepper",
+                                        "localizedName": "salt and pepper",
+                                        "image": "salt-and-pepper.jpg"
+                                    },
+                                    {
+                                        "id": 93627,
+                                        "name": "liquid smoke",
+                                        "localizedName": "liquid smoke",
+                                        "image": "dark-sauce.jpg"
+                                    },
+                                    {
+                                        "id": 1042027,
+                                        "name": "seasoning",
+                                        "localizedName": "seasoning",
+                                        "image": "seasoning.png"
+                                    },
+                                    {
+                                        "id": 1016168,
+                                        "name": "sriracha",
+                                        "localizedName": "sriracha",
+                                        "image": "hot-sauce-or-tabasco.png"
+                                    },
+                                    {
+                                        "id": 1002030,
+                                        "name": "pepper",
+                                        "localizedName": "pepper",
+                                        "image": "pepper.jpg"
+                                    },
+                                    {
+                                        "id": 1002044,
+                                        "name": "herbs",
+                                        "localizedName": "herbs",
+                                        "image": "mixed-fresh-herbs.jpg"
+                                    },
+                                    {
+                                        "id": 14412,
+                                        "name": "water",
+                                        "localizedName": "water",
+                                        "image": "water.png"
+                                    },
+                                    {
+                                        "id": 2047,
+                                        "name": "salt",
+                                        "localizedName": "salt",
+                                        "image": "salt.jpg"
+                                    },
+                                    {
+                                        "id": 0,
+                                        "name": "stew",
+                                        "localizedName": "stew",
+                                        "image": ""
+                                    }
+                                ],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/red-kidney-bean-jambalaya-782601"
+            },
+            {
+                "vegetarian": true,
+                "vegan": true,
+                "glutenFree": true,
+                "dairyFree": true,
+                "veryHealthy": true,
+                "cheap": false,
+                "veryPopular": false,
+                "sustainable": false,
+                "weightWatcherSmartPoints": 14,
+                "gaps": "no",
+                "lowFodmap": false,
+                "aggregateLikes": 44,
+                "spoonacularScore": 99.0,
+                "healthScore": 100.0,
+                "creditsText": "Lisa's Vegetarian Kitchen",
+                "license": "CC BY 2.5 CA",
+                "sourceName": "Food and Spice",
+                "pricePerServing": 137.57,
+                "id": 794349,
+                "title": "Broccoli and Chickpea Rice Salad",
+                "readyInMinutes": 45,
+                "servings": 6,
+                "sourceUrl": "http://foodandspice.blogspot.com/2016/07/broccoli-and-chickpea-rice-salad.html",
+                "image": "https://spoonacular.com/recipeImages/794349-312x231.jpg",
+                "imageType": "jpg",
+                "summary": "Need a <b>gluten free and vegan main course</b>? Broccoli and Chickpea Rice Salad could be a spectacular recipe to try. One serving contains <b>524 calories</b>, <b>19g of protein</b>, and <b>12g of fat</b>. For <b>$1.38 per serving</b>, this recipe <b>covers 36%</b> of your daily requirements of vitamins and minerals. Head to the store and pick up almonds, olive oil, 2 tablespoons pineapple juice (juice from canned pineapple), and a few other things to make it today. 42 people have made this recipe and would make it again. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is spectacular. Similar recipes include <a href=\"https://spoonacular.com/recipes/easy-balsamic-chickpea-brown-rice-broccoli-salad-101160\">Easy Balsamic Chickpea, Brown Rice & Broccoli Salad</a>, <a href=\"https://spoonacular.com/recipes/super-easy-chickpea-brown-rice-broccoli-crockpot-casserole-584241\">Super Easy Chickpea, Brown Rice & Broccoli Crockpot Casserole</a>, and <a href=\"https://spoonacular.com/recipes/chickpea-and-broccoli-salad-29686\">Chickpean And Broccoli Salad</a>.",
+                "cuisines": [],
+                "dishTypes": [
+                    "lunch",
+                    "main course",
+                    "main dish",
+                    "dinner"
+                ],
+                "diets": [
+                    "gluten free",
+                    "dairy free",
+                    "lacto ovo vegetarian",
+                    "vegan"
+                ],
+                "occasions": [],
+                "analyzedInstructions": [
+                    {
+                        "name": "",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "step": "In a large skillet, heat the oil over medium heat.",
+                                "ingredients": [
+                                    {
+                                        "id": 4582,
+                                        "name": "cooking oil",
+                                        "localizedName": "cooking oil",
+                                        "image": "vegetable-oil.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404645,
+                                        "name": "frying pan",
+                                        "localizedName": "frying pan",
+                                        "image": "pan.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 2,
+                                "step": "Add the broccoli, stir well, and cover. Cook, stirring often, until the broccoli is tender.",
+                                "ingredients": [
+                                    {
+                                        "id": 11090,
+                                        "name": "broccoli",
+                                        "localizedName": "broccoli",
+                                        "image": "broccoli.jpg"
+                                    }
+                                ],
+                                "equipment": []
+                            },
+                            {
+                                "number": 3,
+                                "step": "Add the broccoli to a large bowl, along with the remaining salad ingredients.To make the dressing, whisk together all of the dressing ingredients in a small bowl.",
+                                "ingredients": [
+                                    {
+                                        "id": 11090,
+                                        "name": "broccoli",
+                                        "localizedName": "broccoli",
+                                        "image": "broccoli.jpg"
+                                    }
+                                ],
+                                "equipment": [
+                                    {
+                                        "id": 404661,
+                                        "name": "whisk",
+                                        "localizedName": "whisk",
+                                        "image": "whisk.png"
+                                    },
+                                    {
+                                        "id": 404783,
+                                        "name": "bowl",
+                                        "localizedName": "bowl",
+                                        "image": "bowl.jpg"
+                                    }
+                                ]
+                            },
+                            {
+                                "number": 4,
+                                "step": "Pour the dressing over the salad and toss well to coat evenly. Taste for seasoning and serve.",
+                                "ingredients": [
+                                    {
+                                        "id": 1042027,
+                                        "name": "seasoning",
+                                        "localizedName": "seasoning",
+                                        "image": "seasoning.png"
+                                    }
+                                ],
+                                "equipment": []
+                            }
+                        ]
+                    }
+                ],
+                "spoonacularSourceUrl": "https://spoonacular.com/broccoli-and-chickpea-rice-salad-794349"
+            }
+        ],
+        "offset": 0,
+        "number": 9,
+        "totalResults": 5076
+    }
   
 
-  async function addPost1(){
+  useEffect(() => {
+    createPost1()
+    createPost2()
+    createPost3()
+    createPost4()
+    createPost5()
+    createPost6()
+  }, [data])
+
+
+  const createPost1 = async function() {
+    const dataResults = data.results;
+
     let Post = new Parse.Object('Post')
+    Post.set('ObjectId', 'qUpG2IH0FG')
+    Post.set('title', `${dataResults[0].title}`)
+    Post.set('summary', `${dataResults[0].summary}`)
+    Post.set('image', `${dataResults[0].image}`)
+    Post.set('creditsText', `${dataResults[0].creditsText}`)
+    Post.set('cuisine', `${dataResults[0].cuisines}`)
+    Post.set('diets', `${dataResults[0].diets}`)
+    Post.set('readyInMinutes', `${dataResults[0].readyInMinutes}`)
 
     try {
-    Post.set('title', `${unstructureData.title0}`)
-    Post.set('image', `${unstructureData.image0}`)
-    // Post.set('cuisine', `${unstructureData.cuisine0}`)
-    Post.set('summary', `${unstructureData.summary0}`)
-    // Post.set('creditsText', `${unstructureData.creditsText0}`)
-    // Post.set('diet', `${unstructureData.diet0}`)
-    // Post.set('readyInMinutes', `${unstructureData.readyInMinutes0}`)
-    // Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions0}`)
-    // Post.set('id', unstructureData.id0)
       await Post.save()
-      alert("Success, post created")
-      return true
-    }catch(error) {
-      alert(`Error! ${error.message}`);
-      return false; 
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
-  // async function addPost2(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title1}`)
-  //   Post.set('image', `${unstructureData.image1}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine1}`)
-  //   Post.set('summary', `${unstructureData.summary1}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText1}`)
-  //   Post.set('diet', `${unstructureData.diet1}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes1}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions1}`)
-  //   // Post.set('id', unstructureData.id1)
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+  const createPost2 = async function() {
+    const dataResults = data.results;
 
-  // async function addPost3(){
-  //  try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title2}`)
-  //   Post.set('image', `${unstructureData.image2}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine2}`)
-  //   Post.set('summary', `${unstructureData.summary2}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText2}`)
-  //   Post.set('diet', `${unstructureData.title2}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes2}`)
-  //   // Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions2}`)
-  //   // Post.set('id', unstructureData.id0)
-    
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
-  
+    let Post = new Parse.Object('Post')
+    Post.set('title', `${dataResults[1].title}`)
+    Post.set('readyInMinutes', `${dataResults[1].readyInMinutes}`)
+    Post.set('summary', `${dataResults[1].summary}`)
+    Post.set('image', `${dataResults[1].image}`)
+    Post.set('creditsText', `${dataResults[1].creditsText}`)
+    Post.set('cuisine', `${dataResults[1].cuisines}`)
+    Post.set('diets', `${dataResults[1].diets}`)
 
-  // async function addPost4(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title3}`)
-  //   Post.set('image', `${unstructureData.image3}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine3}`)
-  //   Post.set('summary', `${unstructureData.summary3}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText3}`)
-  //   Post.set('diet', `${unstructureData.title3}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes3}`)
-  //   // Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions3}`)
-  //   // Post.set('id', unstructureData.id0)
-    
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+    try {
+      await Post.save()
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
 
-  // async function addPost5(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title4}`)
-  //   Post.set('image', `${unstructureData.image4}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine4}`)
-  //   Post.set('summary', `${unstructureData.summary4}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText4}`)
-  //   Post.set('diet', `${unstructureData.title4}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes4}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions4}`)
-  //   // Post.set('id', unstructureData.id0)
-    
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+    const createPost3 = async function() {
+        const dataResults = data.results;
 
-  // async function addPost6(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title5}`)
-  //   Post.set('image', `${unstructureData.image5}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine5}`)
-  //   Post.set('summary', `${unstructureData.summary5}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText5}`)
-  //   Post.set('diet', `${unstructureData.title5}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes5}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions5}`)
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${dataResults[2].title}`)
+        Post.set('readyInMinutes', `${dataResults[2].readyInMinutes}`)
+        Post.set('summary', `${dataResults[2].summary}`)
+        Post.set('image', `${dataResults[2].image}`)
+        Post.set('creditsText', `${dataResults[2].creditsText}`)
+        Post.set('cuisine', `${dataResults[2].cuisines}`)
+        Post.set('diets', `${dataResults[2].diets}`)
+        try {
+            await Post.save()
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
+    const createPost4 = async function() {
+        const dataResults = data.results;
 
-  // async function addPost7(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title6}`)
-  //   Post.set('image', `${unstructureData.image6}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine6}`)
-  //   Post.set('summary', `${unstructureData.summary6}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText6}`)
-  //   Post.set('diet', `${unstructureData.title6}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes6}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions6}`)
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${dataResults[3].title}`)
+        Post.set('readyInMinutes', `${dataResults[3].readyInMinutes}`)
+        Post.set('summary', `${dataResults[3].summary}`)
+        Post.set('image', `${dataResults[3].image}`)
+        Post.set('creditsText', `${dataResults[3].creditsText}`)
+        Post.set('cuisine', `${dataResults[3].cuisines}`)
+        Post.set('diets', `${dataResults[3].diets}`)
+        try {
+            await Post.save()
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
+    const createPost5 = async function() {
+        const dataResults = data.results;
 
-  // async function addPost8(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title7}`)
-  //   Post.set('image', `${unstructureData.image7}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine7}`)
-  //   Post.set('summary', `${unstructureData.summary7}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText7}`)
-  //   Post.set('diet', `${unstructureData.title7}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes7}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions7}`)
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${dataResults[4].title}`)
+        Post.set('readyInMinutes', `${dataResults[4].readyInMinutes}`)
+        Post.set('summary', `${dataResults[4].summary}`)
+        Post.set('image', `${dataResults[4].image}`)
+        Post.set('creditsText', `${dataResults[4].creditsText}`)
+        Post.set('cuisine', `${dataResults[4].cuisines}`)
+        Post.set('diets', `${dataResults[4].diets}`)
+        try {
+            await Post.save()
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    const createPost6 = async function() {
+        const dataResults = data.results;
+
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${dataResults[5].title}`)
+        Post.set('readyInMinutes', `${dataResults[5].readyInMinutes}`)
+        Post.set('summary', `${dataResults[5].summary}`)
+        Post.set('image', `${dataResults[5].image}`)
+        Post.set('creditsText', `${dataResults[5].creditsText}`)
+        Post.set('cuisine', `${dataResults[5].cuisines}`)
+        Post.set('diets', `${dataResults[5].diets}`)
+        try {
+            await Post.save()
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
 
-
-  // async function addPost9(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title8}`)
-  //   Post.set('image', `${unstructureData.image8}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine8}`)
-  //   Post.set('summary', `${unstructureData.summary8}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText8}`)
-  //   Post.set('diet', `${unstructureData.title8}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes8}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions8}`)
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
-
-  // async function addPost10(){
-  //   try {
-  //   let Post = new Parse.Object('Post')
-  //   Post.set('title', `${unstructureData.title9}`)
-  //   Post.set('image', `${unstructureData.image9}`)
-  //   Post.set('cuisine', `${unstructureData.cuisine9}`)
-  //   Post.set('summary', `${unstructureData.summary9}`)
-  //   Post.set('creditsText', `${unstructureData.creditsText9}`)
-  //   Post.set('diet', `${unstructureData.title9}`)
-  //   Post.set('readyInMinutes', `${unstructureData.readyInMinutes9}`)
-  //   Post.set('analyzedInstructions', `${unstructureData.analyzedInstructions9}`)
-    
-  //     await Post.save()
-  //     alert("Success, post created")
-  //     return true
-  //   }catch(error) {
-  //     alert(`Error! ${error.message}`);
-  //     return false; 
-  //   }
-  // }
-
-  
-
-  return (
+    return (
     <>
       <Router>
         <Switch>
@@ -382,7 +1854,7 @@ function App() {
         </Switch>
       </Router>
     </>
-  )
+    )
 }
 
 export default App
