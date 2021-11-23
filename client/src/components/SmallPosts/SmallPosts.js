@@ -32,9 +32,13 @@ function SmallPosts({title, image, summary, readyInMinutes, diet, cuisine, credi
     }
   }
 
+  const [initialState, setInitialState] = useState([])
+
 
   useEffect(() => {
     // addPost()
+
+     
     fetchPost()
   }, [])
 
