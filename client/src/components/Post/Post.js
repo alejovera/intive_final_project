@@ -65,10 +65,17 @@ function Post({id}) {
                                 { ReactHtmlParser(summary)}
                             </p>
                         </div>
-                        <div className="top-post__p">
+                        
+                        <div className="small-post__time" style={{padding: '20px 0'}}>
                             <p>
-                                {readyInMinutes}
+                                {readyInMinutes}'
                             </p>
+                            <span style={{fontSize: '1.5em'}}>
+                                <i className="far fa-clock"></i>  
+                            </span>
+                        </div>
+                        <div className="top-post__p">
+                            
                             <p className="hola">{diet}</p>
                             <p>Created: {createdAt}</p>
                         </div>

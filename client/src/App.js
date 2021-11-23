@@ -7,97 +7,113 @@ import { Admin } from './pages/Admin';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Parse from 'parse/dist/parse'
+import Parse, { async } from 'parse/dist/parse'
 
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar';
 import { User } from 'parse';
-const PARSE_APPLICATION_ID = 'ADz4kDBwnigZxfluAwoz50e67XCFEDuwqqKEVlFn';
+const PARSE_APPLICATION_ID = 'OCxT0FEdfcKDeSt4fixK4oe682dSmiNXTw1wUdxP';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
-const PARSE_JAVASCRIPT_KEY = '18bNTn0q3tpWR2lagfTBNkcqQhN1wdTW4BSz8lOl';
+const PARSE_JAVASCRIPT_KEY = '5R9YmLIdMC6VeMUyyoMVvOWTcJQGHZosV7teTYzu';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
 
 
-const API_KEY = 'e97329be8b32403880bf659279fa5ae9';
-const numberOfPosts = 10
+// const API_KEY = 'e97329be8b32403880bf659279fa5ae9';
+// const numberOfPosts = 10
 
 function App() {
-    const [initialState, setInitialState] = useState()
+    const [fetchedData, setFetchedData] = useState()
+    const [counter, setCounter] = useState(0)
+
+    const controller = new AbortController()
 
 
   useEffect(() => {
-
-    fetch('/api/posts')
-        .then(res => res.json())
-        .then(res => {
-            const arrayResult = res.results;
-            return setInitialState(arrayResult)
-        });
-
-    
-
-    createPost1()
+    fetchData()
+    if(fetchedData !== undefined) {
+        createPost1()
+    }
     // createPost2()
     // createPost3()
     // createPost4()
     // createPost5()
     // createPost6()
-  }, [initialState])
+  }, [])
 
 
-    console.log(initialState);
-
-  const createPost1 = async function() {
-    // const dataResults = initialState.results;
-
-    let Post = new Parse.Object('Post')
-    Post.set('title', `${initialState[0].title}`)
-    Post.set('summary', `${initialState[0].summary}`)
-    Post.set('image', `${initialState[0].image}`)
-    Post.set('creditsText', `${initialState[0].creditsText}`)
-    Post.set('cuisine', `${initialState[0].cuisines}`)
-    Post.set('diets', `${initialState[0].diets}`)
-    Post.set('readyInMinutes', `${initialState[0].readyInMinutes}`)
-
-    try {
-      await Post.save()
-    } catch (error) {
-      console.log(error.message);
+    const fetchData = async () => {
+        const response = await fetch('/api/posts', {signal: controller.signal})
+        const data = await response.json()
+        const arrayResult = data.results;
+        setCounter(prevCount => prevCount + 1)
+        return setFetchedData(arrayResult)
+        // fetch('/api/posts')
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         setCounter(prevCount => prevCount + 1)
+        //         console.log(counter);
+        //         const arrayResult = res.results;
+        //         return setfetchedData(arrayResult)
+        //     });
     }
-  }
+    // if (counter <= 6) {
+    //     fetchData()
+    // } else {
+    //     return false
+    // }
+    
+    
 
-  const createPost2 = async function() {
-    const dataResults = initialState.results;
+    const createPost1 = async function() {
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${fetchedData[0].title}`)
+        Post.set('summary', `${fetchedData[0].summary}`)
+        Post.set('image', `${fetchedData[0].image}`)
+        Post.set('creditsText', `${fetchedData[0].creditsText}`)
+        Post.set('cuisine', `${fetchedData[0].cuisines}`)
+        Post.set('diets', `${fetchedData[0].diets}`)
+        Post.set('readyInMinutes', `${fetchedData[0].readyInMinutes}`)
 
-    let Post = new Parse.Object('Post')
-    Post.set('title', `${dataResults[1].title}`)
-    Post.set('readyInMinutes', `${dataResults[1].readyInMinutes}`)
-    Post.set('summary', `${dataResults[1].summary}`)
-    Post.set('image', `${dataResults[1].image}`)
-    Post.set('creditsText', `${dataResults[1].creditsText}`)
-    Post.set('cuisine', `${dataResults[1].cuisines}`)
-    Post.set('diets', `${dataResults[1].diets}`)
-
-    try {
-      await Post.save()
-    } catch (error) {
-      console.log(error.message);
+        try {
+            await Post.save()
+            alert('Post saved')
+        } catch (error) {
+            alert('Post error')
+            console.log(error.message);
+        }
     }
-  }
+
+
+    const createPost2 = async function() {
+
+        let Post = new Parse.Object('Post')
+        Post.set('title', `${fetchedData[1].title}`)
+        Post.set('readyInMinutes', `${fetchedData[1].readyInMinutes}`)
+        Post.set('summary', `${fetchedData[1].summary}`)
+        Post.set('image', `${fetchedData[1].image}`)
+        Post.set('creditsText', `${fetchedData[1].creditsText}`)
+        Post.set('cuisine', `${fetchedData[1].cuisines}`)
+        Post.set('diets', `${fetchedData[1].diets}`)
+
+        try {
+        await Post.save()
+        } catch (error) {
+        console.log(error.message);
+        }
+    }
 
 
     const createPost3 = async function() {
-        const dataResults = initialState.results;
 
         let Post = new Parse.Object('Post')
-        Post.set('title', `${dataResults[2].title}`)
-        Post.set('readyInMinutes', `${dataResults[2].readyInMinutes}`)
-        Post.set('summary', `${dataResults[2].summary}`)
-        Post.set('image', `${dataResults[2].image}`)
-        Post.set('creditsText', `${dataResults[2].creditsText}`)
-        Post.set('cuisine', `${dataResults[2].cuisines}`)
-        Post.set('diets', `${dataResults[2].diets}`)
+        Post.set('title', `${fetchedData[2].title}`)
+        Post.set('readyInMinutes', `${fetchedData[2].readyInMinutes}`)
+        Post.set('summary', `${fetchedData[2].summary}`)
+        Post.set('image', `${fetchedData[2].image}`)
+        Post.set('creditsText', `${fetchedData[2].creditsText}`)
+        Post.set('cuisine', `${fetchedData[2].cuisines}`)
+        Post.set('diets', `${fetchedData[2].diets}`)
         try {
             await Post.save()
         } catch (error) {
@@ -106,16 +122,15 @@ function App() {
     }
 
     const createPost4 = async function() {
-        const dataResults = initialState.results;
 
         let Post = new Parse.Object('Post')
-        Post.set('title', `${dataResults[3].title}`)
-        Post.set('readyInMinutes', `${dataResults[3].readyInMinutes}`)
-        Post.set('summary', `${dataResults[3].summary}`)
-        Post.set('image', `${dataResults[3].image}`)
-        Post.set('creditsText', `${dataResults[3].creditsText}`)
-        Post.set('cuisine', `${dataResults[3].cuisines}`)
-        Post.set('diets', `${dataResults[3].diets}`)
+        Post.set('title', `${fetchedData[3].title}`)
+        Post.set('readyInMinutes', `${fetchedData[3].readyInMinutes}`)
+        Post.set('summary', `${fetchedData[3].summary}`)
+        Post.set('image', `${fetchedData[3].image}`)
+        Post.set('creditsText', `${fetchedData[3].creditsText}`)
+        Post.set('cuisine', `${fetchedData[3].cuisines}`)
+        Post.set('diets', `${fetchedData[3].diets}`)
         try {
             await Post.save()
         } catch (error) {
@@ -124,16 +139,15 @@ function App() {
     }
 
     const createPost5 = async function() {
-        const dataResults = initialState.results;
 
         let Post = new Parse.Object('Post')
-        Post.set('title', `${dataResults[4].title}`)
-        Post.set('readyInMinutes', `${dataResults[4].readyInMinutes}`)
-        Post.set('summary', `${dataResults[4].summary}`)
-        Post.set('image', `${dataResults[4].image}`)
-        Post.set('creditsText', `${dataResults[4].creditsText}`)
-        Post.set('cuisine', `${dataResults[4].cuisines}`)
-        Post.set('diets', `${dataResults[4].diets}`)
+        Post.set('title', `${fetchedData[4].title}`)
+        Post.set('readyInMinutes', `${fetchedData[4].readyInMinutes}`)
+        Post.set('summary', `${fetchedData[4].summary}`)
+        Post.set('image', `${fetchedData[4].image}`)
+        Post.set('creditsText', `${fetchedData[4].creditsText}`)
+        Post.set('cuisine', `${fetchedData[4].cuisines}`)
+        Post.set('diets', `${fetchedData[4].diets}`)
         try {
             await Post.save()
         } catch (error) {
@@ -142,22 +156,45 @@ function App() {
     }
 
     const createPost6 = async function() {
-        const dataResults = initialState.results;
 
         let Post = new Parse.Object('Post')
-        Post.set('title', `${dataResults[5].title}`)
-        Post.set('readyInMinutes', `${dataResults[5].readyInMinutes}`)
-        Post.set('summary', `${dataResults[5].summary}`)
-        Post.set('image', `${dataResults[5].image}`)
-        Post.set('creditsText', `${dataResults[5].creditsText}`)
-        Post.set('cuisine', `${dataResults[5].cuisines}`)
-        Post.set('diets', `${dataResults[5].diets}`)
+        Post.set('title', `${fetchedData[5].title}`)
+        Post.set('readyInMinutes', `${fetchedData[5].readyInMinutes}`)
+        Post.set('summary', `${fetchedData[5].summary}`)
+        Post.set('image', `${fetchedData[5].image}`)
+        Post.set('creditsText', `${fetchedData[5].creditsText}`)
+        Post.set('cuisine', `${fetchedData[5].cuisines}`)
+        Post.set('diets', `${fetchedData[5].diets}`)
         try {
             await Post.save()
         } catch (error) {
             console.log(error.message);
         }
     }
+
+
+
+    if (fetchedData) {
+        
+        createPost1()
+        createPost2()
+
+        // controller.abort()
+
+        
+        
+        createPost3()
+        createPost4()
+        createPost5()
+        createPost6()
+    //   setCounter(counter++)
+    } else {
+        return null
+    }
+
+  
+
+  
 
 
     return (
