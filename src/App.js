@@ -12,9 +12,9 @@ import Parse from 'parse/dist/parse'
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar';
 import { User } from 'parse';
-const PARSE_APPLICATION_ID = '7fIObWv2y3pdRwB7kRQwNeB11DMWd38Yv34x39ZC';
+const PARSE_APPLICATION_ID = 'qbbBbuyfXs5smXau8vvEV7ICWnh2XiD7gRapCkZV';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
-const PARSE_JAVASCRIPT_KEY = 'Gp4VPYleyXPnUNPazxJ2SmdKAEaIBFblqILllKfq';
+const PARSE_JAVASCRIPT_KEY = 'MRX1eXaUVG0y5jCX53Sknem6MQPheMdqZVfkaENh';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
 
