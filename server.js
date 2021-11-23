@@ -3,6 +3,10 @@ const cors = require('cors')
 
 const app = express()
 
+app.get('/', (req, res) => {
+
+})
+
 app.get('/api/posts', cors(), (req, res) => {
     const data = 
     {
@@ -1698,4 +1702,4 @@ app.get('/api/posts', cors(), (req, res) => {
 
 const port = 5000;
 
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(process.env.PORT || 5000);
