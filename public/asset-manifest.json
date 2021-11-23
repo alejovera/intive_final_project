@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d3d5fe8b.chunk.css",
+    "main.js": "/static/js/main.18cce718.chunk.js",
+    "main.js.map": "/static/js/main.18cce718.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b513904a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b513904a.js.map",
+    "static/js/2.6c4ef69f.chunk.js": "/static/js/2.6c4ef69f.chunk.js",
+    "static/js/2.6c4ef69f.chunk.js.map": "/static/js/2.6c4ef69f.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d3d5fe8b.chunk.css.map": "/static/css/main.d3d5fe8b.chunk.css.map",
+    "static/js/2.6c4ef69f.chunk.js.LICENSE.txt": "/static/js/2.6c4ef69f.chunk.js.LICENSE.txt",
+    "static/media/seafood.e5e28c08.jpg": "/static/media/seafood.e5e28c08.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b513904a.js",
+    "static/js/2.6c4ef69f.chunk.js",
+    "static/css/main.d3d5fe8b.chunk.css",
+    "static/js/main.18cce718.chunk.js"
+  ]
+}
